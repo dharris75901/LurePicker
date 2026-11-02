@@ -57,6 +57,7 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 .tabs{gap:8px;border:0}.tabs button{font-weight:700;min-height:48px;border-radius:12px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);margin:0}.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 #bf button{border:2px solid var(--ink);font-weight:600}#bf button[aria-pressed=true]{border-color:var(--accent)}#bf button[aria-pressed=true]::before{content:"✓ "}
 #tbx{border:2px solid var(--accent)}#tbx summary{background:var(--accent);color:var(--accent-ink);font-weight:700;padding:12px 14px;border-radius:10px}#tbx summary .weak{color:var(--accent-ink)}
+.tabs{gap:6px;flex-wrap:wrap}.tabs button{flex:1 1 30%;font-size:.9rem;padding:10px 4px}
 .foot{color:var(--muted);font-size:.82rem;margin-top:20px}
 </style>
 </head>
@@ -75,7 +76,7 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 </details>
 </div>
 
-<div class="tabs" role="tablist"><button type="button" role="tab" id="tb1" aria-selected="true">Lure picker</button><button type="button" role="tab" id="tb2" aria-selected="false">Logger</button></div>
+<div class="tabs" role="tablist"><button type="button" role="tab" id="tb1" aria-selected="true">Lure picker</button><button type="button" role="tab" id="tb5" aria-selected="false">Solunar</button><button type="button" role="tab" id="tb3" aria-selected="false">Tackle box</button><button type="button" role="tab" id="tb4" aria-selected="false">Waypoints</button><button type="button" role="tab" id="tb2" aria-selected="false">Logger</button></div>
 
 <div id="pg1">
 <section class="temp" aria-label="Water temperature">
@@ -105,18 +106,23 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 <div id="ctl"></div>
 <fieldset><legend>What are the bass eating?</legend><div class="chips" id="bf"></div><p class="weak" style="font-size:.85rem;margin:6px 0 0">Pick any you see or know are in the lake. Leave blank if unsure.</p></fieldset>
 
-<details class="box" id="tbx" style="margin-bottom:16px"><summary>My tackle box <span class="weak" id="tcnt"></span></summary>
+</div>
+<div id="pg3" hidden>
+<p class="weak" style="margin-top:0">Baits you add here feed the Lure picker. Use the checkbox at the top of that page to rank only what you own.</p>
+<details class="box" id="tbx" open style="margin-bottom:16px"><summary>My tackle box <span class="weak" id="tcnt"></span></summary>
 <div style="margin-top:10px"><button type="button" class="del" id="tcam" hidden style="margin:0">Identify from photo</button> <input type="file" id="tphoto" accept="image/*" hidden> <span class="weak" id="tstat" role="status" style="font-size:.85rem"></span></div>
 <label class="f" style="margin-top:10px">Bait name<input id="tn" type="text" maxlength="80" placeholder="Red Eye Shad 1/2 oz"></label>
 <label class="f">Type<select id="tc"></select></label>
 <label class="f">Color<input id="tcol" type="text" maxlength="40" placeholder="chartreuse, green pumpkin"></label>
 <button type="button" class="save" id="tadd">Add to tackle box</button> <span class="weak" id="tmsg" role="status"></span>
-<label class="f" style="margin:14px 0 8px;display:flex;gap:10px;align-items:center"><input type="checkbox" id="tonly" checked style="width:auto;padding:0;margin:0"> Only rank lures I have</label>
 <div id="tlist"></div>
 </details>
-
+</div>
+<div id="pg1b">
 <h2>Best bets right now</h2>
 <p class="weak" style="font-size:.85rem;margin:-4px 0 10px">A higher score means a better match for today’s conditions.</p>
+<p class="weak" id="affnote" hidden style="font-size:.85rem;margin:-4px 0 10px">Shop links may earn a commission.</p>
+<label class="box" style="display:flex;gap:10px;align-items:center;margin-bottom:12px;font-weight:600"><input type="checkbox" id="tonly" checked style="width:auto;padding:0;margin:0"> Only rank lures from my tackle box</label>
 <div id="lures" aria-live="polite"></div>
 
 <h2>Colors and line</h2>
@@ -125,6 +131,8 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 <h2>Notes for these conditions</h2>
 <ul class="notes" id="notes"></ul>
 
+</div>
+<div id="pg5" hidden>
 <h2>Solunar feeding times</h2>
 <div class="box">
 <div class="dayrow"><button type="button" id="pd" aria-label="Previous day">‹</button><div id="dl"></div><button type="button" id="nd" aria-label="Next day">›</button></div>
@@ -132,7 +140,7 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 </div>
 
 </div>
-<div id="pg2" hidden>
+<div id="pg4" hidden>
 <h2 id="wh">Waypoints</h2>
 <div class="box">
 <label class="f">Spot name<input id="wn" type="text" maxlength="60" placeholder="Brush pile off the north point"></label>
@@ -145,6 +153,8 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 </div>
 <div id="wlist" style="margin-top:12px"></div>
 
+</div>
+<div id="pg2" hidden>
 <h2>Fishing journal</h2>
 <div class="box">
 <p class="weak" id="jstore"></p>
@@ -229,7 +239,7 @@ function render(){
     var tw=((t<x.l[1]||t>x.l[2])?" Outside its best temperature range.":"")+ownTxt(x.l[0]);
     return '<div class="lure"><h3>'+x.l[0]+' <span class="weak" style="font-weight:400;font-size:.85rem">Score '+x.s+'</span></h3><p class="meta">'+x.l[3]+' · '+x.l[4]+'</p><p class="why">'+
       (x.f.length?'Fits: '+x.f.join(", ")+'.':'')+(x.w.length?' <span class="weak">Weaker in: '+x.w.join(", ")+'.</span>':'')+
-      '<span class="weak">'+tw+'</span></p></div>';
+      '<span class="weak">'+tw+'</span></p>'+shopP(x.l[0])+'</div>';
   }).join("");
 
   var c=S.clar,cv=S.cover;
@@ -335,6 +345,11 @@ function jTm(){var a=$("jstart").value,b=$("jend").value;return a?t12(a)+(b?" �
 $("jdate").value=todayStr();
 $("jstart").addEventListener("input",function(){jtUser=true});$("jend").addEventListener("input",function(){jtUser=true});
 jtSync();
+/* FishUSA affiliate: fill in mi and pw after AvantLink approval, then check the search address */
+var AFF={mi:"",pw:"",search:"https://www.fishusa.com/search?q="};
+var SHOP={"Jig with craw trailer":"bass jig","Blade bait or jigging spoon":"blade bait","Suspending jerkbait":"jerkbait","Lipless crankbait":"lipless crankbait","Squarebill crankbait":"squarebill crankbait","Deep-diving crankbait":"deep diving crankbait","Spinnerbait":"spinnerbait","Bladed jig (Chatterbait)":"bladed jig","Texas-rig worm or creature":"soft plastic creature bait","Ned rig or wacky worm":"ned rig","Drop shot":"drop shot","Walking topwater or popper":"walking topwater","Buzzbait":"buzzbait","Hollow-body frog":"hollow body frog","Swimbait":"swimbait","Carolina rig":"carolina rig"};
+function shopP(n){if(!AFF.mi||!AFF.pw||!SHOP[n])return "";return '<p class="why" style="margin-top:8px"><a href="https://www.avantlink.com/click.php?tt=cl&amp;mi='+encodeURIComponent(AFF.mi)+'&amp;pw='+encodeURIComponent(AFF.pw)+'&amp;url='+encodeURIComponent(AFF.search+encodeURIComponent(SHOP[n]))+'" target="_blank" rel="noopener noreferrer sponsored">Shop at FishUSA</a></p>'}
+if(AFF.mi&&AFF.pw)$("affnote").hidden=false;
 /* Photo lookup */
 async function shrink(f){try{var bm=await createImageBitmap(f),s=Math.min(1,1280/Math.max(bm.width,bm.height)),c=document.createElement("canvas");c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);return await new Promise(function(r){c.toBlob(function(b){r(b||f)},"image/jpeg",0.85)})}catch(e){return f}}
 async function photoId(f){
@@ -378,8 +393,8 @@ function exp(k){
 }
 [].forEach.call(document.querySelectorAll("[data-x]"),function(x){x.onclick=function(){exp(x.getAttribute("data-x"))}});
 /* Tabs */
-function tab(n){["1","2"].forEach(function(i){$("pg"+i).hidden=i!==String(n);$("tb"+i).setAttribute("aria-selected",i===String(n))})}
-$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};
+function tab(n){["1","2","3","4","5"].forEach(function(i){var on=i===String(n);$("pg"+i).hidden=!on;$("tb"+i).setAttribute("aria-selected",on)});$("pg1b").hidden=String(n)!=="1"}
+$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};
 /* Forage */
 var BN=["shad","bg","craw"],BL={shad:"shad",bg:"bluegill and perch",craw:"crawfish"},BF={},BT={"Jig with craw trailer":{craw:3,bg:1},"Blade bait or jigging spoon":{shad:3},"Suspending jerkbait":{shad:2,bg:1},"Lipless crankbait":{shad:2,craw:1},"Squarebill crankbait":{craw:3,bg:1},"Deep-diving crankbait":{craw:2,shad:1},"Spinnerbait":{shad:2},"Bladed jig (Chatterbait)":{shad:2,bg:1,craw:1},"Texas-rig worm or creature":{craw:3,bg:1},"Ned rig or wacky worm":{craw:1},"Drop shot":{shad:1,bg:1},"Walking topwater or popper":{shad:2,bg:1},"Buzzbait":{shad:1,bg:1},"Hollow-body frog":{bg:2},"Swimbait":{shad:3,bg:3},"Carolina rig":{craw:2}};
 var bfc=$("bf"),BLAB={shad:"Shad",bg:"Bluegill or perch",craw:"Crawfish"};
