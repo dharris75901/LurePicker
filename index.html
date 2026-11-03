@@ -1,118 +1,253 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!doctype html>
 <html lang="en">
 <head>
-<script type="text/javascript" src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=f26e0c0a67bfdc87f18834f6c52969554e270a66"></script>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Bass Buddy">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
 <title>Bass Fishing Buddy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#edf1f0;--surface:#fff;--ink:#0e2a30;--muted:#4d6468;--line:#c9d5d4;--accent:#c4e03a;--accent-ink:#13250a;--focus:#0a6c7a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b1e;--surface:#16282c;--ink:#e7f0ef;--muted:#9bb3b6;--line:#2a4247;--focus:#6fd0de}}
-:root[data-theme="dark"]{--bg:#0e1b1e;--surface:#16282c;--ink:#e7f0ef;--muted:#9bb3b6;--line:#2a4247;--focus:#6fd0de}
+/* Layout: dark lake-contour header card, stacked cards below, fixed bottom tab bar.
+   Palette: deep lake teal for actions, cool marine neutrals, one lime accent reserved for selection and the top pick.
+   Type: Bricolage Grotesque for headings and readouts, Instrument Sans for everything else. */
+:root{--bg:#edf2f2;--surface:#ffffff;--surface-2:#f3f7f7;--ink:#0c2b33;--muted:#566d74;--line:#dae3e4;--track:#b7c6c9;--brand:#0e5a66;--brand-ink:#ffffff;--accent:#c8e64b;--accent-ink:#17250a;--focus:#0e7f8f;--minor:#8ccbd3;--star:#c98500;--nav-bg:rgba(255,255,255,.94);--shadow:0 1px 2px rgba(12,43,51,.05),0 12px 28px -16px rgba(12,43,51,.2);--hero-a:#0f5360;--hero-b:#08222a;--f-display:"Bricolage Grotesque","Avenir Next",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08161b;--surface:#10252b;--surface-2:#0b1d22;--ink:#e6f0f0;--muted:#97b0b5;--line:#23404a;--track:#35525c;--brand:#8ad3dd;--brand-ink:#05242b;--focus:#7fd0db;--minor:#3e8e99;--star:#f0b94a;--nav-bg:rgba(16,37,43,.94);--shadow:none;--hero-a:#10515d;--hero-b:#0a252c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#08161b;--surface:#10252b;--surface-2:#0b1d22;--ink:#e6f0f0;--muted:#97b0b5;--line:#23404a;--track:#35525c;--brand:#8ad3dd;--brand-ink:#05242b;--focus:#7fd0db;--minor:#3e8e99;--star:#f0b94a;--nav-bg:rgba(16,37,43,.94);--shadow:none;--hero-a:#10515d;--hero-b:#0a252c;color-scheme:dark}
 *,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.45}
-main{max-width:640px;margin:0 auto;padding:20px 16px 40px}
-h1{font-size:1.35rem;font-weight:800;margin:0 0 2px}
-.sub{color:var(--muted);margin:0 0 20px;font-size:.95rem}
-.temp{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 16px 20px;margin-bottom:16px}
-.read{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
-.deg{font-size:3.6rem;font-weight:800;line-height:1;letter-spacing:-.02em}
-.phase{color:var(--muted);text-align:right;font-weight:600}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:14px;border-radius:7px;background:linear-gradient(90deg,#3b7dd8,#27a6a0,#c4e03a,#f0a030,#e0502e);outline-offset:6px;margin:6px 0}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--surface);border:4px solid var(--ink);cursor:pointer}
-input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--surface);border:4px solid var(--ink);cursor:pointer}
-.scale{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted)}
-fieldset{border:0;padding:0;margin:0 0 14px}
-legend{font-weight:600;padding:0;margin-bottom:6px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{font:inherit;font-size:.92rem;padding:9px 14px;min-height:40px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
-.chips button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
-button:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-h2{font-size:1.05rem;margin:24px 0 10px}
-.lure{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
-.lure:first-of-type{border-color:var(--ink);border-width:2px}
-.lure h3{margin:0 0 4px;font-size:1.02rem}
-.meta{color:var(--muted);font-size:.88rem;margin:0 0 6px}
-.why{font-size:.9rem;margin:0}
+details::details-content{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+main{max-width:640px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding-block:16px calc(112px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main>*{min-width:0}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
+h1{font-size:1.55rem;line-height:1.05;font-weight:700;letter-spacing:-.015em}
+h2{font-size:1.3rem;line-height:1.2;font-weight:700;letter-spacing:-.012em;margin-top:10px}
+h3{font-size:1.05rem;line-height:1.25;font-weight:700}
+p{margin:0}
+p:empty{display:none}
+a{color:var(--focus);font-weight:600;text-underline-offset:3px}
 .weak{color:var(--muted)}
-.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
-.box p{margin:0 0 8px;font-size:.93rem}
-.box p:last-child{margin:0}
-ul.notes{margin:0;padding-left:18px;font-size:.93rem}
-ul.notes li{margin-bottom:6px}
-.dayrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:4px 0 12px}.dayrow button{font:inherit;min-width:44px;min-height:44px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.2rem;cursor:pointer}.dayrow div{font-weight:600;text-align:center}
-.tl{position:relative;height:28px;background:var(--bg);border:1px solid var(--line);border-radius:6px;margin:10px 0 2px;overflow:hidden}.tl i{position:absolute;top:0;bottom:0}.tl .mj{background:var(--accent)}.tl .mn{background:#7fc4cc}.tl .sn{width:2px;background:var(--ink)}
-.tla{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:8px}.per{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:.93rem}.stars{letter-spacing:2px}
-.box input:not([type=range]),.box textarea,.box select{width:100%;font:inherit;padding:10px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);margin-top:4px}
-label.f{display:block;margin-bottom:10px;font-weight:600;font-size:.93rem}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.save{font:inherit;font-weight:600;padding:12px 18px;min-height:44px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer}
-.del{font:inherit;font-size:.85rem;margin-top:8px;border:1px solid var(--line);background:none;color:var(--muted);border-radius:8px;padding:6px 10px;min-height:36px;cursor:pointer}
-details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px}#jlist .lure,#wlist .lure{border-width:1px;border-color:var(--line)}.lure a{color:var(--focus);font-size:.9rem}
-.dual{position:relative;height:30px;margin:6px 0}.dual .trk{position:absolute;left:15px;right:15px;top:8px;height:14px;border-radius:7px;background:var(--line)}
-.dual input[type=range]{position:absolute;left:0;top:0;width:100%;height:30px;margin:0;background:none;pointer-events:none}
-.dual input[type=range]::-webkit-slider-thumb{pointer-events:auto}.dual input[type=range]::-moz-range-thumb{pointer-events:auto}.dual input[type=range]::-moz-range-track{background:transparent}
-.tabs{display:flex;gap:6px;margin:0 0 16px;border-bottom:2px solid var(--line)}.tabs button{flex:1;font:inherit;font-weight:600;padding:12px 8px;min-height:44px;background:none;border:0;border-bottom:4px solid transparent;margin-bottom:-2px;color:var(--muted);cursor:pointer}.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
-.tabs{gap:8px;border:0}.tabs button{font-weight:700;min-height:48px;border-radius:12px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);margin:0}.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-#bf button{border:2px solid var(--ink);font-weight:600}#bf button[aria-pressed=true]{border-color:var(--accent)}#bf button[aria-pressed=true]::before{content:"✓ "}
-#tbx{border:2px solid var(--accent)}#tbx summary{background:var(--accent);color:var(--accent-ink);font-weight:700;padding:12px 14px;border-radius:10px}#tbx summary .weak{color:var(--accent-ink)}
-.tabs{gap:6px;flex-wrap:wrap}.tabs button{flex:1 1 30%;font-size:.9rem;padding:10px 4px}
-.foot{color:var(--muted);font-size:.82rem;margin-top:20px}
+.small{font-size:.82rem;line-height:1.4}
+.sect{font:700 1rem/1.3 var(--f-display)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* Header */
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:18px;color:#fff;background:linear-gradient(155deg,var(--hero-a),var(--hero-b));display:grid;gap:18px}
+.contours{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.contours path{fill:none;stroke:#fff;stroke-opacity:.13;stroke-width:1.5}
+.brand{position:relative;display:flex;align-items:center;gap:14px}
+.logo{width:54px;height:54px;flex:none;border-radius:15px;box-shadow:0 0 0 1px rgba(255,255,255,.22),0 6px 16px -6px rgba(0,0,0,.5)}
+.hero h1{color:#fff}
+.sub{margin-top:4px;color:rgba(255,255,255,.8);font-size:.9rem;line-height:1.35}
+.lakebar{position:relative;display:grid;gap:6px}
+.lake-l{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.8)}
+.hero select{background-color:rgba(255,255,255,.14);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");border:1px solid rgba(255,255,255,.28);color:#fff;font:600 1.05rem/1.2 var(--f-body);min-height:52px;border-radius:14px;padding:0 44px 0 16px}
+.hero select option{color:var(--ink);background:var(--surface)}
+.links{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lk{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:600;font-size:.9rem;text-decoration:none}
+.lk svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Cards */
+.box,.temp{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}
+.box>*+*{margin-top:14px}
+.card-title{font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.read{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin-bottom:12px}
+.deg{font:700 3rem/1 var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.deg.sm{font-size:2.3rem}
+.deg.xs{font-size:1.4rem;letter-spacing:-.02em}
+.phase{font-size:.8rem;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink)}
+.phase:empty{display:none}
+.scale{display:flex;justify-content:space-between;margin-top:2px;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+#tsun{margin-top:10px}
+#wlv{margin-top:14px}
+#wlive{font-size:.82rem;margin-left:8px}
+
+/* Sliders */
+input[type=range]{-webkit-appearance:none;appearance:none;display:block;width:100%;height:10px;margin:12px 0;border-radius:5px;background:linear-gradient(90deg,#3b7dd8,#27a6a0,#c4e03a,#f0a030,#e0502e)}
+input[type=range]:focus-visible{outline-offset:8px}
+#ws{background:linear-gradient(90deg,#c5dde0,#4db3ad,#0e5a6a)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:3px solid var(--brand);box-shadow:0 2px 6px rgba(0,0,0,.28);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--brand);box-shadow:0 2px 6px rgba(0,0,0,.28);cursor:pointer}
+.dual{position:relative;height:32px;margin:8px 0}
+.dual .trk{position:absolute;left:14px;right:14px;top:11px;height:10px;border-radius:5px;background:var(--line)}
+.dual input[type=range]{position:absolute;left:0;top:0;width:100%;height:32px;margin:0;background:none;pointer-events:none}
+.dual input[type=range]::-webkit-slider-thumb{pointer-events:auto}
+.dual input[type=range]::-moz-range-thumb{pointer-events:auto}
+.dual input[type=range]::-moz-range-track{background:transparent}
+
+/* Choices */
+fieldset{border:0;padding:0;margin:0;min-width:0}
+legend{padding:0;margin-bottom:8px;font-size:.85rem;font-weight:600;color:var(--muted)}
+.wd-set{margin-top:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:600 .9rem/1 var(--f-body);padding:0 16px;min-height:42px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);cursor:pointer;transition:background-color .15s,border-color .15s}
+.chips button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:transparent;box-shadow:inset 0 0 0 1px rgba(23,37,10,.18)}
+#wd button{min-width:50px;padding:0 10px}
+#bf button[aria-pressed=true]::before{content:"\2713\00a0"}
+#ctl{display:grid;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}
+#ctl:empty{display:none}
+.hint{margin-top:10px}
+
+/* Forms */
+label.f{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;font-size:.82rem;font-weight:600;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.two>label{min-width:0}
+input:not([type=range]):not([type=checkbox]):not([type=file]),textarea,select{width:100%;min-width:0;min-height:48px;margin:0;padding:12px 14px;font:500 16px/1.25 var(--f-body);color:var(--ink);background-color:var(--surface-2);border:1px solid var(--line);border-radius:12px}
+textarea{min-height:84px;resize:vertical}
+select{-webkit-appearance:none;appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2373888d' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.75}
+.save{font:700 .95rem/1 var(--f-body);min-height:48px;padding:0 22px;border-radius:12px;border:0;background:var(--brand);color:var(--brand-ink);cursor:pointer}
+.save:active{transform:translateY(1px)}
+.del{font:600 .85rem/1 var(--f-body);min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.lure .del{margin-top:8px}
+.per>span{min-width:0;overflow-wrap:anywhere}
+.per-r{display:flex;align-items:center;gap:12px;flex:none}
+label.ord{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer}
+label.ord input{width:20px;height:20px;margin:0;accent-color:var(--brand)}
+.orderbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#ordlist{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+#ordlist a{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:10px;color:var(--brand);font-weight:600;overflow-wrap:anywhere}
+.lure .del+.save,.lure .save+.del{margin-left:8px}
+.lure label.f{margin-top:10px}
+#tcam{display:inline-flex;align-items:center;gap:8px}
+#tcam svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.photo-row:has(#tcam[hidden]){display:none}
+span[role=status]{margin-left:10px;font-size:.85rem;color:var(--muted)}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.95rem;font-weight:600;color:var(--ink);cursor:pointer}
+input.switch{-webkit-appearance:none;appearance:none;flex:none;position:relative;width:48px;height:30px;margin:0;border:0;border-radius:999px;background:var(--track);cursor:pointer;transition:background-color .15s}
+input.switch::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .15s,background-color .15s}
+input.switch:checked{background:var(--accent)}
+input.switch:checked::after{transform:translateX(18px);background:var(--accent-ink)}
+details>summary{display:flex;align-items:center;gap:8px;min-height:44px;font-weight:700;cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .15s}
+details[open]>summary::after{transform:rotate(-135deg) translateY(-2px)}
+#tcnt{font-weight:600}
+
+/* Lure results and lists */
+#lures,#wlist,#jlist,#clist{display:grid;gap:10px}
+#tlist{display:grid}
+.lure{display:grid;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
+.lure-h{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.score{flex:none;font-size:.76rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums}
+#lures .lure:first-child{border-color:transparent;box-shadow:0 0 0 2px var(--accent),var(--shadow)}
+#lures .lure:first-child .score{background:var(--accent);border-color:transparent;color:var(--accent-ink)}
+.meta{color:var(--muted);font-size:.88rem}
+.depth{display:inline-block;margin-right:8px;padding:2px 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink);font-weight:600;font-size:.76rem;white-space:nowrap}
+.why{font-size:.88rem}
+.notes{list-style:none;margin:0;padding:2px 16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.notes li{padding:12px 0;border-top:1px solid var(--line);font-size:.93rem}
+.notes li:first-child{border-top:0}
+.per{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:.92rem}
+
+/* Solunar */
+.dayrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dayrow button{width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer}
+.dayrow div{font:700 1.05rem/1.2 var(--f-display);text-align:center}
+#sol>*+*{margin-top:10px}
+#sol b{font:700 1.1rem/1.2 var(--f-display)}
+.stars{color:var(--star);letter-spacing:2px}
+.tl{position:relative;height:34px;overflow:hidden;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.tl i{position:absolute;top:0;bottom:0}
+.tl .mj{background:var(--accent)}
+.tl .mn{background:var(--minor)}
+.tl .sn{width:2px;background:var(--ink)}
+#sol>.tla{margin-top:6px}
+#sol>.per{margin-top:0}
+.tla{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Export */
+#pg6 .chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#pg6 .chips button{display:flex;align-items:center;min-height:52px;padding:0 14px;border-radius:14px;text-align:left;font-size:.88rem;line-height:1.2}
+
+/* Footer note */
+.foot{padding:4px 4px 0;color:var(--muted);font-size:.8rem;line-height:1.45}
+
+/* Navigation */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--nav-bg);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-top:1px solid var(--line);padding-top:6px;padding-bottom:calc(6px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.navin{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px}
+.navin button{display:grid;justify-items:center;gap:3px;min-width:0;padding:2px 0;border:0;background:none;color:var(--muted);font:600 11px/1.1 var(--f-body);cursor:pointer}
+.ico{display:grid;place-items:center;width:48px;height:30px;border-radius:999px;transition:background-color .15s}
+.ico svg,.sheet svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lab{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.navin button[aria-current=page]{color:var(--ink)}
+.navin button[aria-current=page] .ico{background:var(--accent);color:var(--accent-ink)}
+.sheet{position:fixed;z-index:30;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));display:grid;min-width:200px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px -12px rgba(0,0,0,.35)}
+.sheet button{display:flex;align-items:center;gap:12px;min-height:48px;padding:0 14px;border:0;border-radius:12px;background:none;color:var(--ink);font:600 .95rem/1 var(--f-body);text-align:left;cursor:pointer}
+.sheet button[aria-current=page]{background:var(--accent);color:var(--accent-ink)}
+
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-content:start;animation:rise .22s ease-out}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <main>
-<h1>Bass Fishing Buddy</h1>
-<p class="sub">Set today’s conditions for largemouth bass. Lures re-rank as you change them.</p>
+<header class="hero">
+<svg class="contours" aria-hidden="true" viewBox="0 0 400 220" preserveAspectRatio="xMaxYMid slice"><path d="M170 120C170 40 260 8 340 30C410 50 450 40 470 100C490 160 400 205 320 195C240 188 170 190 170 120Z"/><path d="M210 112C210 62 270 40 330 60C385 78 420 70 440 108C455 146 395 178 330 170C265 162 210 160 210 112Z"/><path d="M240 112C240 80 280 66 322 78C362 90 392 86 408 110C420 134 380 152 332 148C286 144 240 144 240 112Z"/><path d="M272 112C272 96 298 88 324 95C350 102 368 100 378 112C386 124 360 132 334 130C302 128 272 126 272 112Z"/></svg>
+<div class="brand">
+<svg class="logo" viewBox="135 120 760 760" role="img" aria-label="Bass Fishing Buddy logo"><defs><radialGradient id="lgbg" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="#16616d"/><stop offset="1" stop-color="#0a2229"/></radialGradient><linearGradient id="lgfish" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4ee48"/><stop offset="1" stop-color="#9fbd22"/></linearGradient></defs><rect x="0" y="0" width="1024" height="1024" fill="url(#lgbg)"/><path d="M400 392C425 300 540 288 600 340C540 356 470 372 400 392Z" fill="#8fae1c"/><path d="M170 520C250 380 520 340 700 440L860 355C828 440 828 570 860 665L700 585C520 700 250 660 170 520Z" fill="url(#lgfish)"/><path d="M300 575C420 600 560 585 690 520" fill="none" stroke="#6f8a14" stroke-opacity=".55" stroke-width="26" stroke-linecap="round"/><circle cx="272" cy="495" r="26" fill="#fff"/><circle cx="278" cy="497" r="13" fill="#0a2229"/></svg>
+<div><h1>Bass Fishing Buddy</h1><p class="sub">Set today’s conditions and see what to throw.</p></div>
+</div>
+<div class="lakebar"><label class="lake-l" for="lk">Lake</label><select id="lk"></select></div>
+<div class="links"><a class="lk" id="gearth" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.6 4 5.6 4 9s-1.2 6.4-4 9c-2.8-2.6-4-5.6-4-9s1.2-6.4 4-9z"/></svg>Google Earth</a><a class="lk" id="gmap" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>Maps</a></div>
+</header>
 
-<div class="box" style="margin-bottom:16px">
-<label class="f" for="lk" style="margin-bottom:0">Lake<select id="lk"></select></label>
-<details style="margin:10px 0 0"><summary>Add a lake</summary>
+<details class="box lakeadmin"><summary>Add/Edit Lake</summary>
+<p class="sect">Fix the selected lake’s location</p>
+<label class="f">New coordinates or map link<input id="lfix" type="text" maxlength="500" placeholder="32.8123, -95.5678"></label>
+<button type="button" class="save" id="lfb">Update location</button> <button type="button" class="del" id="lfr">Reset</button> <span class="weak" id="lfmsg" role="status"></span>
+<p class="sect">Add a new lake</p>
 <label class="f">Name<input id="ln" type="text" maxlength="60"></label>
 <div class="two"><label class="f">Latitude<input id="lla" type="number" step="any" placeholder="32.82"></label><label class="f">Longitude<input id="llo" type="number" step="any" placeholder="-95.55"></label></div>
-<p class="weak" style="font-size:.85rem">Touch and hold the lake in a maps app to see its coordinates. Times are shown in Central time.</p>
+<p class="weak small">Touch and hold the lake in a maps app to see its coordinates. Times are shown in Central time.</p>
 <button type="button" class="save" id="ab">Add lake</button> <span class="weak" id="amsg" role="status"></span>
 </details>
-</div>
-
-<div class="tabs" role="tablist"><button type="button" role="tab" id="tb1" aria-selected="true">Lure picker</button><button type="button" role="tab" id="tb5" aria-selected="false">Solunar</button><button type="button" role="tab" id="tb3" aria-selected="false">Tackle box</button><button type="button" role="tab" id="tb4" aria-selected="false">Waypoints</button><button type="button" role="tab" id="tb2" aria-selected="false">Logger</button></div>
 
 <div id="pg1">
 <section class="temp" aria-label="Water temperature">
-<p style="margin:0 0 8px;font-weight:600">Water temperature</p>
+<p class="card-title">Water temperature</p>
 <div class="read"><div class="deg" id="deg">65°F</div><div class="phase" id="phase"></div></div>
 <input type="range" id="t" min="38" max="92" value="65" aria-label="Water temperature in degrees Fahrenheit">
 <div class="scale"><span>38°</span><span>65°</span><span>92°</span></div>
 </section>
 
 <section class="temp" aria-label="Wind">
-<p style="margin:0 0 8px;font-weight:600">Wind speed and direction</p>
-<div class="read"><div class="deg" id="wsp" style="font-size:2.4rem">8 mph</div><div class="phase" id="wdr"></div></div>
-<input type="range" id="ws" min="0" max="30" value="8" aria-label="Wind speed in miles per hour" style="background:linear-gradient(90deg,#b9d4d8,#27a6a0,#0e5a6a)">
+<p class="card-title">Wind speed and direction</p>
+<div class="read"><div class="deg sm" id="wsp">8 mph</div><div class="phase" id="wdr"></div></div>
+<input type="range" id="ws" min="0" max="30" value="8" aria-label="Wind speed in miles per hour">
 <div class="scale"><span>0</span><span>15</span><span>30 mph</span></div>
-<fieldset style="margin:12px 0 0"><legend>Blowing from</legend><div class="chips" id="wd"></div></fieldset>
-<button type="button" class="del" id="wlv" hidden style="margin-top:12px">Use live wind (AccuWeather)</button> <span class="weak" id="wlive" role="status" style="font-size:.85rem"></span>
+<fieldset class="wd-set"><legend>Blowing from</legend><div class="chips" id="wd"></div></fieldset>
+<button type="button" class="del" id="wlv" hidden>Use live wind (AccuWeather)</button><span class="weak" id="wlive" role="status"></span>
 </section>
 
 <section class="temp" aria-label="Time window">
-<p id="tlab" style="margin:0 0 8px;font-weight:600">Fishing time</p>
-<div class="read"><div class="deg" id="tdl" style="font-size:1.6rem"></div><div class="phase" id="tph"></div></div>
+<p class="card-title" id="tlab">Fishing time</p>
+<div class="read"><div class="deg xs" id="tdl"></div><div class="phase" id="tph"></div></div>
 <div class="dual"><div class="trk" id="trk"></div><input type="range" id="tstart" min="0" max="24" step="0.5" value="6" aria-label="Start time"><input type="range" id="tend" min="0" max="24" step="0.5" value="9" aria-label="End time"></div>
 <div class="scale"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
-<p class="weak" id="tsun" style="font-size:.85rem;margin:8px 0 0"></p>
+<p class="weak small" id="tsun"></p>
 </section>
 
 <div id="ctl"></div>
-<fieldset><legend>What are the bass eating?</legend><div class="chips" id="bf"></div><p class="weak" style="font-size:.85rem;margin:6px 0 0">Pick any you see or know are in the lake. Leave blank if unsure.</p></fieldset>
+<div class="box"><fieldset><legend>What are the bass eating?</legend><div class="chips" id="bf"></div><p class="weak small hint">Pick any you see or know are in the lake. Leave blank if unsure.</p></fieldset></div>
 
 </div>
 <div id="pg3" hidden>
-<p class="weak" style="margin-top:0">Baits you add here feed the Lure picker. Use the checkbox at the top of that page to rank only what you own.</p>
-<details class="box" id="tbx" open style="margin-bottom:16px"><summary>My tackle box <span class="weak" id="tcnt"></span></summary>
-<div style="margin-top:10px"><button type="button" class="del" id="tcam" hidden style="margin:0">Identify from photo</button> <input type="file" id="tphoto" accept="image/*" hidden> <span class="weak" id="tstat" role="status" style="font-size:.85rem"></span></div>
-<label class="f" style="margin-top:10px">Bait name<input id="tn" type="text" maxlength="80" placeholder="Red Eye Shad 1/2 oz"></label>
+<p class="weak">Baits you add here feed the Lures page. Turn on “Only rank lures from my tackle box” there to rank only what you own.</p>
+<div class="orderbar"><button type="button" class="save" id="ordgo">Place Order</button><span class="weak" id="ordmsg" role="status">Check “Order” on the baits you want to buy.</span></div>
+<div id="ordlist"></div>
+<details class="box" id="tbx" open><summary>My tackle box <span class="weak" id="tcnt"></span></summary>
+<div class="photo-row"><button type="button" class="del" id="tcam" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.2"/></svg>Identify from photo</button><input type="file" id="tphoto" accept="image/*" hidden><span class="weak" id="tstat" role="status"></span></div>
+<label class="f">Bait name<input id="tn" type="text" maxlength="80" placeholder="Red Eye Shad 1/2 oz"></label>
 <label class="f">Type<select id="tc"></select></label>
 <label class="f">Color<input id="tcol" type="text" maxlength="40" placeholder="chartreuse, green pumpkin"></label>
 <button type="button" class="save" id="tadd">Add to tackle box</button> <span class="weak" id="tmsg" role="status"></span>
@@ -121,9 +256,9 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 </div>
 <div id="pg1b">
 <h2>Best bets right now</h2>
-<p class="weak" style="font-size:.85rem;margin:-4px 0 10px">A higher score means a better match for today’s conditions.</p>
-<p class="weak" id="affnote" hidden style="font-size:.85rem;margin:-4px 0 10px">Shop links may earn a commission.</p>
-<label class="box" style="display:flex;gap:10px;align-items:center;margin-bottom:12px;font-weight:600"><input type="checkbox" id="tonly" checked style="width:auto;padding:0;margin:0"> Only rank lures from my tackle box</label>
+<p class="weak small">A higher score means a better match for today’s conditions.</p>
+<p class="weak small" id="affnote" hidden>Shop links may earn a commission.</p>
+<label class="box toggle"><span>Only rank lures from my tackle box</span><input type="checkbox" id="tonly" class="switch" checked></label>
 <div id="lures" aria-live="polite"></div>
 
 <h2>Colors and line</h2>
@@ -147,19 +282,19 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 <label class="f">Spot name<input id="wn" type="text" maxlength="60" placeholder="Brush pile off the north point"></label>
 <label class="f">Type<select id="wty"><option>Brush pile</option><option>Point</option><option>Timber edge</option><option>Grass edge</option><option>Creek channel</option><option>Dock or bridge</option><option>Boat ramp</option><option>Other</option></select></label>
 <div class="two"><label class="f">Latitude<input id="wla" type="number" step="any"></label><label class="f">Longitude<input id="wlo" type="number" step="any"></label></div>
-<button type="button" class="del" id="wgps" style="margin:0 0 12px">Use my location</button>
-<label class="f">Or paste coordinates<input id="wpaste" type="text" placeholder="32.8123, -95.5678"></label>
+<button type="button" class="del" id="wgps">Use my location</button>
+<label class="f">Or paste coordinates or a map link<input id="wpaste" type="text" placeholder="32.8123, -95.5678"></label>
 <label class="f">Notes (depth, what worked)<textarea id="wnote" rows="2" maxlength="500"></textarea></label>
 <button type="button" class="save" id="wb">Save waypoint</button> <span class="weak" id="wmsg" role="status"></span>
 </div>
-<div id="wlist" style="margin-top:12px"></div>
+<div id="wlist"></div>
 
 </div>
 <div id="pg2" hidden>
 <h2>Fishing journal</h2>
 <div class="box">
 <p class="weak" id="jstore"></p>
-<p>Each trip is saved with the lake, temperature, conditions, and moon phase you have set on the Lure picker page.</p>
+<p class="weak">Each trip is saved with the lake, temperature, conditions, and moon phase you have set on the Lures page.</p>
 <label class="f">Date<input id="jdate" type="date"></label>
 <div class="two"><label class="f">Start time<input id="jstart" type="time"></label><label class="f">End time<input id="jend" type="time"></label></div>
 <label class="f">Waypoint<select id="jwp"></select></label>
@@ -168,19 +303,38 @@ details{margin:4px 0 12px}summary{cursor:pointer;font-weight:600;min-height:32px
 <label class="f">Notes<textarea id="jnote" rows="3" maxlength="1000"></textarea></label>
 <button type="button" class="save" id="js">Save trip</button> <span class="weak" id="jmsg" role="status"></span>
 </div>
-<div id="jlist" style="margin-top:12px"></div>
+<div id="jlist"></div>
 
+</div>
+<div id="pg6" hidden>
 <h2>Export your data</h2>
 <div class="box">
 <p>Save a copy of your logs. CSV files open in Excel or Google Sheets.</p>
-<div class="chips"><button type="button" data-x="j">Journal (CSV)</button><button type="button" data-x="w">Waypoints (CSV)</button><button type="button" data-x="t">Tackle box (CSV)</button><button type="button" data-x="a">Everything (JSON)</button></div>
-<p class="weak" id="xmsg" role="status" style="margin-top:10px"></p>
+<div class="chips"><button type="button" data-x="j">Journal (CSV)</button><button type="button" data-x="w">Waypoints (CSV)</button><button type="button" data-x="g">Waypoints (GPX)</button><button type="button" data-x="v">Contacts (VCF)</button><button type="button" data-x="t">Tackle box (CSV)</button><button type="button" data-x="a">Everything (JSON)</button></div>
+<p class="weak" id="xmsg" role="status"></p>
 <textarea id="xout" rows="6" hidden readonly></textarea>
 </div>
+</div>
+<div id="pg7" hidden>
+<h2 id="ch">Contacts</h2>
+<p class="weak">Guides, shops, marinas, and other numbers for the lake you picked. These are separate from your iPhone contacts. To copy them to your phone, use Contacts (VCF) on the Export page, under More.</p>
+<div class="box">
+<label class="f">Name<input id="cn" type="text" maxlength="80" placeholder="Capt. Jim Smith"></label>
+<label class="f">Type<select id="cty"><option>Guide</option><option>Bait and tackle shop</option><option>Marina</option><option>Boat ramp or park</option><option>Lodging</option><option>Game warden</option><option>Other</option></select></label>
+<label class="f">Phone<input id="cph" type="tel" maxlength="30" placeholder="903-555-0123"></label>
+<label class="f">Location (optional)<input id="cloc" type="text" maxlength="500" placeholder="32.8123, -95.5678"></label>
+<p class="weak small">Paste coordinates, or paste a map link from Share, then Copy, in Apple Maps or Google Maps.</p>
+<label class="f">Notes (hours, prices, website)<textarea id="cnote" rows="2" maxlength="500"></textarea></label>
+<label class="toggle"><span>Show for every lake</span><input type="checkbox" id="call" class="switch"></label>
+<button type="button" class="save" id="cb">Save contact</button> <span class="weak" id="cmsg" role="status"></span>
+</div>
+<div id="clist"></div>
 </div>
 
 <p class="foot">A starting point, not a guarantee. Baitfish location, fishing pressure, and the fish’s mood can override any chart. If something isn’t working, change depth or speed before changing lures.</p>
 </main>
+<nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb1" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb5"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Solunar</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
+<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
 
 <script>
 var G=[
@@ -238,7 +392,7 @@ function render(){
   var all=L.map(function(l){var x=score(l,t);x.l=l;return x}).sort(function(a,b){return b.s-a.s}),own=$("tonly").checked&&TB.length,r=(own?all.filter(function(x){return TB.some(function(b){return b.c===x.l[0]})}):all).slice(0,5);
   document.getElementById("lures").innerHTML=r.map(function(x){
     var tw=((t<x.l[1]||t>x.l[2])?" Outside its best temperature range.":"")+ownTxt(x.l[0]);
-    return '<div class="lure"><h3>'+x.l[0]+' <span class="weak" style="font-weight:400;font-size:.85rem">Score '+x.s+'</span></h3><p class="meta">'+x.l[3]+' · '+x.l[4]+'</p><p class="why">'+
+    return '<div class="lure"><div class="lure-h"><h3>'+x.l[0]+'</h3><span class="score">'+(r.indexOf(x)===0?'Best match · ':'')+'Score '+x.s+'</span></div><p class="meta"><span class="depth">'+x.l[3]+'</span>'+x.l[4]+'</p><p class="why">'+
       (x.f.length?'Fits: '+x.f.join(", ")+'.':'')+(x.w.length?' <span class="weak">Weaker in: '+x.w.join(", ")+'.</span>':'')+
       '<span class="weak">'+tw+'</span></p>'+shopP(x.l[0])+'</div>';
   }).join("");
@@ -351,6 +505,35 @@ var AFF={mi:"",pw:"",search:"https://www.fishusa.com/search?q="};
 var SHOP={"Jig with craw trailer":"bass jig","Blade bait or jigging spoon":"blade bait","Suspending jerkbait":"jerkbait","Lipless crankbait":"lipless crankbait","Squarebill crankbait":"squarebill crankbait","Deep-diving crankbait":"deep diving crankbait","Spinnerbait":"spinnerbait","Bladed jig (Chatterbait)":"bladed jig","Texas-rig worm or creature":"soft plastic creature bait","Ned rig or wacky worm":"ned rig","Drop shot":"drop shot","Walking topwater or popper":"walking topwater","Buzzbait":"buzzbait","Hollow-body frog":"hollow body frog","Swimbait":"swimbait","Carolina rig":"carolina rig"};
 function shopP(n){if(!AFF.mi||!AFF.pw||!SHOP[n])return "";return '<p class="why" style="margin-top:8px"><a href="https://www.avantlink.com/click.php?tt=cl&amp;mi='+encodeURIComponent(AFF.mi)+'&amp;pw='+encodeURIComponent(AFF.pw)+'&amp;url='+encodeURIComponent(AFF.search+encodeURIComponent(SHOP[n]))+'" target="_blank" rel="noopener noreferrer sponsored">Shop at FishUSA</a></p>'}
 if(AFF.mi&&AFF.pw)$("affnote").hidden=false;
+/* Fix lake location */
+$("lfb").onclick=function(){var m=parseLoc($("lfix").value),n=LK[lk][0];if(!m||Math.abs(m[0])>90||Math.abs(m[1])>180){$("lfmsg").textContent="Couldn’t find coordinates. Paste a Google Maps link or type latitude, longitude.";return}selName=n;put("l_",{n:n,la:+m[0].toFixed(5),lo:+m[1].toFixed(5)},"lfmsg");$("lfix").value="";$("lfmsg").textContent="Location updated."};
+$("lfr").onclick=function(){var n=LK[lk][0];if(!BASE.some(function(b){return b[0]===n})){$("lfmsg").textContent="Added lakes can’t be reset. Update the location instead.";return}var a=CL.filter(function(c){return c.n===n});if(!a.length){$("lfmsg").textContent="This lake is already at its original location.";return}selName=n;a.forEach(function(c){del(c.id)});$("lfmsg").textContent="Reset to the original location."};
+/* Contacts */
+function ge(){var k=LK[lk];$("gearth").href="https://earth.google.com/web/@"+k[1]+","+k[2]+",100a,12000d,35y,0h,0t,0r";$("gmap").href="https://maps.apple.com/?ll="+k[1]+","+k[2]+"&z=13&q="+encodeURIComponent(k[0])}
+function parseLoc(s){try{s=decodeURIComponent(s)}catch(e){}var m=/(?:ll|coordinate|q|sll|center)=(-?\d+\.\d+),\s*(-?\d+\.\d+)/.exec(s)||/@(-?\d+\.\d+),(-?\d+\.\d+)/.exec(s)||/(-?\d+(?:\.\d+)?)\s*[,\s]\s*(-?\d+(?:\.\d+)?)/.exec(s);return m?[+m[1],+m[2]]:null}
+var BS=String.fromCharCode(92),NL=String.fromCharCode(10),CRLF=String.fromCharCode(13,10);
+function ve(s){return String(s||"").split(BS).join(BS+BS).split(";").join(BS+";").split(",").join(BS+",").split(NL).join(BS+"n")}
+function renderC(){
+ var Lc=$("clist"),name=LK[lk][0],last="";Lc.innerHTML="";$("ch").textContent="Contacts for "+name;
+ var a=CT.filter(function(c){return c.all||c.lake===name}).sort(function(x,y){return (x.ty+x.n)<(y.ty+y.n)?-1:1});
+ if(!a.length)Lc.appendChild(h("p","weak","No contacts for this lake yet."));
+ a.forEach(function(c){
+  if(c.ty!==last){last=c.ty;var g=h("p","",c.ty);g.style.cssText="font-weight:700;margin:14px 0 6px";Lc.appendChild(g)}
+  var d=h("div","lure");d.appendChild(h("h3","",c.n));d.appendChild(h("p","meta",c.all?"All lakes":c.lake));
+  if(c.ph){var pp=h("p","why"),aa=h("a","",c.ph);aa.href="tel:"+c.ph.replace(/[^0-9+]/g,"");pp.appendChild(aa);d.appendChild(pp)}
+  if(typeof c.la==="number"){var lp=h("p","why"),lq=h("a","",c.la+", "+c.lo+" · Open in Maps");lq.href="https://maps.apple.com/?ll="+c.la+","+c.lo+"&q="+encodeURIComponent(c.n);lq.target="_blank";lq.rel="noopener noreferrer";lp.appendChild(lq);d.appendChild(lp)}
+  if(c.notes)d.appendChild(h("p","why weak",c.notes));
+  var b=h("button","del","Delete"),arm=false;b.type="button";
+  b.onclick=function(){if(!arm){arm=true;b.textContent="Tap again to delete"}else del(c.id)};
+  d.appendChild(b);Lc.appendChild(d)});
+}
+$("cb").onclick=function(){
+ var n=$("cn").value.trim();if(!n){$("cmsg").textContent="Enter a name.";return}
+ var lm0=parseLoc($("cloc").value),lm=lm0?[0,lm0[0],lm0[1]]:null,loc={};
+ if($("cloc").value.trim()){if(!lm||Math.abs(+lm[1])>90||Math.abs(+lm[2])>180){$("cmsg").textContent="Couldn’t find coordinates in that. Try a Google Maps link, or type latitude, longitude.";return}loc={la:+(+lm[1]).toFixed(5),lo:+(+lm[2]).toFixed(5)}}
+ var o={n:n.slice(0,80),ty:$("cty").value,ph:$("cph").value.trim().slice(0,30),notes:$("cnote").value.trim().slice(0,500),lake:LK[lk][0],all:$("call").checked,ts:Date.now()};if(loc.la!==undefined){o.la=loc.la;o.lo=loc.lo}put("k_",o,"cmsg");
+ $("cn").value="";$("cph").value="";$("cloc").value="";$("cnote").value="";$("call").checked=false;$("cmsg").textContent="Contact saved.";
+};
 /* Photo lookup */
 async function shrink(f){try{var bm=await createImageBitmap(f),s=Math.min(1,1280/Math.max(bm.width,bm.height)),c=document.createElement("canvas");c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);return await new Promise(function(r){c.toBlob(function(b){r(b||f)},"image/jpeg",0.85)})}catch(e){return f}}
 async function photoId(f){
@@ -388,14 +571,19 @@ function exp(k){
  var d=todayStr(),n,b;
  if(k==="j"){n="fishing-journal-"+d+".csv";b=csv([["Date","Time","Lake","Water temp F","Conditions","Moon","Spot","Lure","Fish caught","Biggest lb","Notes"]].concat(J.slice().sort(function(x,y){return x.ts-y.ts}).map(function(e){return [dstr(e.ts),e.tm||"",e.lake,e.temp,e.cond,e.moon,e.wp||"",e.lure||"",e.n||0,e.big||"",e.notes||""]})))}
  else if(k==="w"){n="waypoints-"+d+".csv";b=csv([["Name","Lake","Type","Latitude","Longitude","Notes","Saved"]].concat(W.slice().sort(function(x,y){return x.ts-y.ts}).map(function(w){return [w.n,w.lake,w.ty,w.la,w.lo,w.notes||"",dstr(w.ts)]})))}
+ else if(k==="v"){n="contacts-"+d+".vcf";b=CT.map(function(c){return ["BEGIN:VCARD","VERSION:3.0","FN:"+ve(c.n),"N:"+ve(c.n)+";;;;","ORG:"+ve(c.ty)].concat(c.ph?["TEL;TYPE=WORK:"+ve(c.ph)]:[]).concat(typeof c.la==="number"?["GEO:"+c.la+";"+c.lo]:[]).concat(["NOTE:"+ve((c.all?"All lakes":c.lake)+(c.notes?" - "+c.notes:"")),"END:VCARD"]).join(CRLF)}).join(CRLF)}
+ else if(k==="g"){n="waypoints-"+d+".gpx";b='<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="Bass Fishing Buddy" xmlns="http://www.topografix.com/GPX/1/1">\n'+W.slice().sort(function(x,y){return x.ts-y.ts}).map(function(w){return '<wpt lat="'+w.la+'" lon="'+w.lo+'"><time>'+new Date(w.ts).toISOString()+'</time><name>'+esc(w.n)+'</name><desc>'+esc(w.lake+" - "+w.ty+(w.notes?" - "+w.notes:""))+'</desc></wpt>'}).join("\n")+"\n</gpx>"}
  else if(k==="t"){n="tackle-box-"+d+".csv";b=csv([["Bait","Type","Color"]].concat(TB.map(function(x){return [x.n,x.c,x.col||""]})))}
- else{n="fishing-backup-"+d+".json";b=JSON.stringify({exported:d,journal:J,waypoints:W,tackle:TB,lakes:CL},null,2)}
+ else{n="fishing-backup-"+d+".json";b=JSON.stringify({exported:d,journal:J,waypoints:W,tackle:TB,contacts:CT,lakes:CL},null,2)}
  saveFile(n,b);
 }
 [].forEach.call(document.querySelectorAll("[data-x]"),function(x){x.onclick=function(){exp(x.getAttribute("data-x"))}});
 /* Tabs */
-function tab(n){["1","2","3","4","5"].forEach(function(i){var on=i===String(n);$("pg"+i).hidden=!on;$("tb"+i).setAttribute("aria-selected",on)});$("pg1b").hidden=String(n)!=="1"}
-$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};
+function tab(n){["1","2","3","4","5","6","7"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
+$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};
+$("tbm").onclick=function(e){e.stopPropagation();var m=$("more");m.hidden=!m.hidden;this.setAttribute("aria-expanded",String(!m.hidden))};
+document.addEventListener("click",function(e){var m=$("more");if(!m.hidden&&!m.contains(e.target)){m.hidden=true;$("tbm").setAttribute("aria-expanded","false")}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("more").hidden=true;$("tbm").setAttribute("aria-expanded","false")}});
 /* Forage */
 var BN=["shad","bg","craw"],BL={shad:"shad",bg:"bluegill and perch",craw:"crawfish"},BF={},BT={"Jig with craw trailer":{craw:3,bg:1},"Blade bait or jigging spoon":{shad:3},"Suspending jerkbait":{shad:2,bg:1},"Lipless crankbait":{shad:2,craw:1},"Squarebill crankbait":{craw:3,bg:1},"Deep-diving crankbait":{craw:2,shad:1},"Spinnerbait":{shad:2},"Bladed jig (Chatterbait)":{shad:2,bg:1,craw:1},"Texas-rig worm or creature":{craw:3,bg:1},"Ned rig or wacky worm":{craw:1},"Drop shot":{shad:1,bg:1},"Walking topwater or popper":{shad:2,bg:1},"Buzzbait":{shad:1,bg:1},"Hollow-body frog":{bg:2},"Swimbait":{shad:3,bg:3},"Carolina rig":{craw:2}};
 var bfc=$("bf"),BLAB={shad:"Shad",bg:"Bluegill or perch",craw:"Crawfish"};
@@ -436,15 +624,17 @@ var NM=["New moon","Waxing crescent","First quarter","Waxing gibbous","Full moon
 function mp(ms){var d=dd(ms),el=norm(moon(d).lon-sun(d).lon);return NM[Math.round(((el/R+360)%360)/45)%8]+", "+Math.round((1-Math.cos(el))/2*100)+"% lit"}
 function $(i){return document.getElementById(i)}
 function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
-var J=[],CL=[],W=[],TB=[],DB=null,UID=null;
+var J=[],CL=[],W=[],TB=[],CT=[],DB=null,UID=null;
 function fillLakes(){var s=$("lk");s.innerHTML="";LK.forEach(function(x,i){var o=document.createElement("option");o.value=i;o.textContent=x[0];s.appendChild(o)});s.value=lk}
-function after(){LK=BASE.concat(CL.map(function(c){return [c.n,c.la,c.lo]}));if(selName){LK.forEach(function(x,i){if(x[0]===selName)lk=i});selName=null}if(lk>=LK.length)lk=0;fillLakes();sol();renderJ();renderW();renderT()}
-function saveLocal(){try{localStorage.setItem("bpj",JSON.stringify({j:J,c:CL,w:W,t:TB}))}catch(e){}}
-function loadLocal(){try{var o=JSON.parse(localStorage.getItem("bpj")||"{}");J=o.j||[];CL=o.c||[];W=o.w||[];TB=o.t||[]}catch(e){}$("jstore").textContent="Saved on this device only.";after()}
+function after(){var M={};CL.forEach(function(c){M[c.n]=c});LK=BASE.map(function(b){var o=M[b[0]];return o?[b[0],o.la,o.lo]:b}).concat(Object.keys(M).filter(function(n){return !BASE.some(function(b){return b[0]===n})}).map(function(n){return [n,M[n].la,M[n].lo]}));if(selName){LK.forEach(function(x,i){if(x[0]===selName)lk=i});selName=null}if(lk>=LK.length)lk=0;fillLakes();sol();renderJ();renderW();renderT();renderC();ge()}
+function saveLocal(){try{localStorage.setItem("bpj",JSON.stringify({j:J,c:CL,w:W,t:TB,k:CT}))}catch(e){}}
+function loadLocal(){try{var o=JSON.parse(localStorage.getItem("bpj")||"{}");J=o.j||[];CL=o.c||[];W=o.w||[];TB=o.t||[];CT=o.k||[]}catch(e){}$("jstore").textContent="Saved on this device only.";after()}
 function put(kind,v,msg){var id=kind+Date.now();v.id=id;
  if(DB&&UID)DB.collection("data/users/"+UID).doc(id).set(v).catch(function(){$(msg).textContent="Couldn’t save. Try again."});
- else{(kind==="j_"?J:kind==="w_"?W:kind==="t_"?TB:CL).push(v);saveLocal();after()}}
-function del(id){if(DB&&UID)DB.collection("data/users/"+UID).doc(id).delete();else{J=J.filter(function(x){return x.id!==id});W=W.filter(function(x){return x.id!==id});TB=TB.filter(function(x){return x.id!==id});saveLocal();after()}}
+ else{(kind==="j_"?J:kind==="w_"?W:kind==="t_"?TB:kind==="k_"?CT:CL).push(v);saveLocal();after()}}
+function del(id){if(DB&&UID)DB.collection("data/users/"+UID).doc(id).delete();else{J=J.filter(function(x){return x.id!==id});W=W.filter(function(x){return x.id!==id});TB=TB.filter(function(x){return x.id!==id});CT=CT.filter(function(x){return x.id!==id});CL=CL.filter(function(x){return x.id!==id});saveLocal();after()}}
+function upd(id,p){var r=null;[J,W,TB,CT,CL].forEach(function(a){a.forEach(function(x){if(x.id===id)r=x})});if(!r)return;var m=Object.assign({},r,p);
+ if(DB&&UID)DB.collection("data/users/"+UID).doc(id).set(m).catch(function(){});else{Object.assign(r,p);saveLocal();after()}}
 function renderJ(){
  var L=$("jlist");L.innerHTML="";
  var a=J.slice().sort(function(x,y){return y.ts-x.ts});
@@ -461,7 +651,7 @@ function renderJ(){
   b.onclick=function(){if(!arm){arm=true;b.textContent="Tap again to delete"}else del(e.id)};
   c.appendChild(b);L.appendChild(c)});
 }
-$("lk").onchange=function(){lk=+this.value;sol();renderW()};
+$("lk").onchange=function(){lk=+this.value;sol();renderW();renderC();ge()};
 $("js").onclick=function(){
  var now=jTs(),cond=G[0].o[S.clar]+" water, "+G[1].o[S.sky].toLowerCase()+", "+WS+" mph wind from the "+DN[WD];
  put("j_",{ts:now,lake:LK[lk][0],temp:+$("t").value,cond:cond,moon:mp(now),tm:jTm(),lure:$("jlure").value.trim().slice(0,120),n:+$("jcnt").value||0,big:+$("jbig").value||0,notes:$("jnote").value.trim().slice(0,1000),wp:wpName($("jwp").value)},"jmsg");
@@ -474,7 +664,25 @@ $("ab").onclick=function(){
  $("ln").value="";$("lla").value="";$("llo").value="";$("amsg").textContent="Lake added.";
 };
 /* Waypoints */
-var wpre="";
+var wpre="",editW=null;
+function wEditForm(w){
+ var c=h("div","lure"),F={};
+ function fld(k,t,el){var l=h("label","f",t);l.appendChild(el);c.appendChild(l);F[k]=el;return el}
+ c.appendChild(h("h3","","Edit waypoint"));
+ var n=document.createElement("input");n.type="text";n.maxLength=60;n.value=w.n;fld("n","Name",n);
+ var ty=document.createElement("select");ty.innerHTML=$("wty").innerHTML;ty.value=w.ty;if(!ty.value)ty.selectedIndex=0;fld("ty","Type",ty);
+ var lk2=document.createElement("select");LK.forEach(function(x){var o=document.createElement("option");o.value=x[0];o.textContent=x[0];lk2.appendChild(o)});lk2.value=w.lake;fld("lake","Lake",lk2);
+ var la=document.createElement("input");la.type="number";la.step="any";la.value=w.la;fld("la","Latitude",la);
+ var lo=document.createElement("input");lo.type="number";lo.step="any";lo.value=w.lo;fld("lo","Longitude",lo);
+ var nt=document.createElement("input");nt.type="text";nt.maxLength=500;nt.value=w.notes||"";fld("notes","Notes",nt);
+ var s=h("button","save","Save changes"),x=h("button","del","Cancel"),m=h("span","weak","");s.type="button";x.type="button";m.setAttribute("role","status");
+ s.onclick=function(){
+  var a=parseFloat(la.value),o=parseFloat(lo.value),nm=n.value.trim();
+  if(!nm||!(a>=-60&&a<=70)||!(o>=-180&&o<=180)){m.textContent="Enter a name, latitude, and longitude.";return}
+  editW=null;upd(w.id,{n:nm.slice(0,60),ty:ty.value,lake:lk2.value,la:+a.toFixed(5),lo:+o.toFixed(5),notes:nt.value.trim().slice(0,500)});renderW()};
+ x.onclick=function(){editW=null;renderW()};
+ var r=h("div","","");r.style.marginTop="12px";r.appendChild(s);r.appendChild(document.createTextNode(" "));r.appendChild(x);r.appendChild(document.createTextNode(" "));r.appendChild(m);c.appendChild(r);
+ return c}
 function wpName(id){var r="";W.forEach(function(w){if(w.id===id)r=w.n});return r}
 function renderW(){
  var L=$("wlist"),s=$("jwp"),cur=s.value,name=LK[lk][0];L.innerHTML="";s.innerHTML="";
@@ -485,12 +693,14 @@ function renderW(){
  if(!a.length)L.appendChild(h("p","weak","No waypoints for this lake yet."));
  a.forEach(function(w){
   var o=document.createElement("option");o.value=w.id;o.textContent=w.n;s.appendChild(o);
+  if(editW===w.id){L.appendChild(wEditForm(w));return}
   var c=h("div","lure");c.appendChild(h("h3","",w.n));c.appendChild(h("p","meta",w.ty+" · "+w.la+", "+w.lo));
   if(w.notes)c.appendChild(h("p","why",w.notes));
   var m=h("a","","Open in maps");m.href="https://www.google.com/maps?q="+w.la+","+w.lo;m.target="_blank";m.rel="noopener noreferrer";c.appendChild(m);c.appendChild(document.createElement("br"));
+  var e=h("button","del","Edit");e.type="button";e.onclick=function(){editW=w.id;renderW()};
   var b=h("button","del","Delete"),arm=false;b.type="button";
   b.onclick=function(){if(!arm){arm=true;b.textContent="Tap again to delete"}else del(w.id)};
-  c.appendChild(b);L.appendChild(c)});
+  c.appendChild(e);c.appendChild(b);L.appendChild(c)});
  s.value=cur;if(!s.value)s.selectedIndex=0;
 }
 $("wgps").onclick=function(){
@@ -498,7 +708,7 @@ $("wgps").onclick=function(){
  $("wmsg").textContent="Getting location…";
  navigator.geolocation.getCurrentPosition(function(p){$("wla").value=p.coords.latitude.toFixed(5);$("wlo").value=p.coords.longitude.toFixed(5);$("wmsg").textContent="Location filled in."},function(){$("wmsg").textContent="Your browser blocked location inside this page. Paste coordinates from your maps app instead."},{enableHighAccuracy:true,timeout:15000});
 };
-$("wpaste").addEventListener("input",function(){var m=/(-?\d+(?:\.\d+)?)\s*[,\s]\s*(-?\d+(?:\.\d+)?)/.exec(this.value);if(m){$("wla").value=m[1];$("wlo").value=m[2];$("wmsg").textContent="Coordinates filled in."}});
+$("wpaste").addEventListener("input",function(){var m=parseLoc(this.value);if(m){$("wla").value=m[0];$("wlo").value=m[1];$("wmsg").textContent="Coordinates filled in."}});
 $("wb").onclick=function(){
  var n=$("wn").value.trim(),la=parseFloat($("wla").value),lo=parseFloat($("wlo").value);
  if(!n||n===wpre.trim())n=LK[lk][0]+" "+(W.filter(function(w){return w.lake===LK[lk][0]}).length+1);
@@ -515,11 +725,23 @@ function renderT(){
  TB.slice().sort(function(x,y){return (x.c+x.n)<(y.c+y.n)?-1:1}).forEach(function(b){
   var d=h("div","per"),x=h("button","del","Remove"),arm=false;x.type="button";x.style.margin="0";
   x.onclick=function(){if(!arm){arm=true;x.textContent="Tap again"}else del(b.id)};
-  d.appendChild(h("span","",b.n+" · "+b.c+(b.col?" · "+b.col:"")));d.appendChild(x);Lt.appendChild(d)});
+  var o=h("label","ord"),cb=document.createElement("input");cb.type="checkbox";cb.checked=!!b.ord;cb.setAttribute("aria-label","Order "+b.n);cb.onchange=function(){upd(b.id,{ord:cb.checked})};
+  o.appendChild(cb);o.appendChild(document.createTextNode("Order"));
+  var r=h("div","per-r");r.appendChild(o);r.appendChild(x);
+  d.appendChild(h("span","",b.n+" · "+b.c+(b.col?" · "+b.col:"")));d.appendChild(r);Lt.appendChild(d)});
+ var oc=TB.filter(function(b){return b.ord}).length;$("ordgo").textContent=oc?"Place Order ("+oc+")":"Place Order";
  render();
 }
 L.forEach(function(l){var o=document.createElement("option");o.value=l[0];o.textContent=l[0];$("tc").appendChild(o)});
 $("tonly").onchange=render;
+function aUrl(q){return "https://www.avantlink.com/click.php?tt=cl&mi="+encodeURIComponent(AFF.mi)+"&pw="+encodeURIComponent(AFF.pw)+"&url="+encodeURIComponent(AFF.search+encodeURIComponent(q))}
+$("ordgo").onclick=function(){
+ var a=TB.filter(function(b){return b.ord}),m=$("ordmsg"),L=$("ordlist");L.innerHTML="";
+ if(!a.length){m.textContent="Check “Order” on the baits you want to buy first.";return}
+ if(!AFF.mi||!AFF.pw){m.textContent=a.length+" item"+(a.length>1?"s":"")+" checked. Ordering isn’t connected yet. Your checks stay saved and will go to the cart once it’s available.";return}
+ m.textContent="Open each item at FishUSA to add it to your cart.";
+ a.forEach(function(b){var l=h("a","","Shop: "+b.n+(b.col?" ("+b.col+")":""));l.href=aUrl((b.n+" "+(b.col||"")).trim());l.target="_blank";l.rel="noopener noreferrer sponsored";L.appendChild(l)});
+};
 $("tadd").onclick=function(){var n=$("tn").value.trim();if(!n){$("tmsg").textContent="Enter a bait name.";return}put("t_",{n:n.slice(0,80),c:$("tc").value,col:$("tcol").value.trim().slice(0,40),ts:Date.now()},"tmsg");$("tn").value="";$("tcol").value="";$("tmsg").textContent="Added."};
 /* Live wind from the viewer's AccuWeather connector */
 var SV="AccuWeather®",LKEY={},D16=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"],TOWN={"Lake Fork":"Quitman, TX","Bois d’Arc":"Bonham, TX","Richland-Chambers":"Corsicana, TX","Cedar Creek":"Kemp, TX","Purtis Creek":"Eustace, TX","Callender Lake":"Murchison, TX","Lake Tawakoni":"Emory, TX","Lake Palestine":"Chandler, TX","Lake O’ the Pines":"Jefferson, TX","Lake Texoma":"Denison, TX","Ray Roberts":"Pilot Point, TX","Lewisville Lake":"Lewisville, TX","Eagle Mountain":"Azle, TX","Lake Conroe":"Conroe, TX","Sam Rayburn":"Jasper, TX","Toledo Bend":"Hemphill, TX","Choke Canyon":"Three Rivers, TX"};
@@ -550,10 +772,12 @@ $("wlv").onclick=liveWind;
  try{if(typeof claude!=="undefined"){DB=await claude.use("db");var U=await claude.use("user");UID=DB&&U?await U.id():null}}catch(e){DB=null;UID=null}
  if(DB&&UID){
   $("jstore").textContent="Saved to your account. Only you can see your entries.";
-  DB.collection("data/users/"+UID).onSnapshot(function(s){J=[];CL=[];W=[];TB=[];s.docs.forEach(function(d){var v=d.data();if(d.id.indexOf("j_")===0)J.push(v);else if(d.id.indexOf("l_")===0)CL.push(v);else if(d.id.indexOf("w_")===0)W.push(v);else if(d.id.indexOf("t_")===0)TB.push(v)});after()},function(){DB=null;loadLocal()});
+  DB.collection("data/users/"+UID).onSnapshot(function(s){J=[];CL=[];W=[];TB=[];CT=[];s.docs.forEach(function(d){var v=d.data();if(d.id.indexOf("j_")===0)J.push(v);else if(d.id.indexOf("l_")===0)CL.push(v);else if(d.id.indexOf("w_")===0)W.push(v);else if(d.id.indexOf("t_")===0)TB.push(v);else if(d.id.indexOf("k_")===0)CT.push(v)});after()},function(){DB=null;loadLocal()});
  }else loadLocal();
 })();
 render();fillLakes();sol();renderJ();
 </script>
 </body>
 </html>
+
+</body></html>
