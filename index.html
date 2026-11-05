@@ -49,6 +49,9 @@ a{color:var(--focus);font-weight:600;text-underline-offset:3px}
 .hero select option{color:var(--ink);background:var(--surface)}
 .links{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .lk{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:600;font-size:.9rem;text-decoration:none}
+.lakeadmin summary{justify-content:center;min-height:46px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:.9rem;font-weight:600}
+.lakeadmin summary::after{margin-left:2px;border-color:#fff}
+.lakeadmin>.box{margin-top:10px;color:var(--ink)}
 .lk svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 /* Cards */
@@ -83,6 +86,19 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 fieldset{border:0;padding:0;margin:0;min-width:0}
 legend{padding:0;margin-bottom:8px;font-size:.85rem;font-weight:600;color:var(--muted)}
 .wd-set{margin-top:14px}
+/* Compact water temperature and wind cards */
+section[aria-label="Water temperature"],section[aria-label="Wind"]{padding:12px 16px 12px}
+section[aria-label="Water temperature"] .card-title,section[aria-label="Wind"] .card-title{margin-bottom:2px}
+section[aria-label="Water temperature"] .read,section[aria-label="Wind"] .read{margin-bottom:0}
+section[aria-label="Water temperature"] .deg{font-size:2rem}
+section[aria-label="Wind"] .deg.sm{font-size:1.7rem}
+section[aria-label="Water temperature"] .phase,section[aria-label="Wind"] .phase{font-size:.75rem;padding:4px 10px}
+section[aria-label="Water temperature"] input[type=range],section[aria-label="Wind"] input[type=range]{margin:8px 0 6px}
+section[aria-label="Wind"] .wd-set{margin-top:8px}
+#wlive:empty{display:none}
+section[aria-label="Wind"] .wd-set{margin-bottom:0}
+section[aria-label="Wind"] .chips{gap:6px}
+section[aria-label="Wind"] .chips button{min-height:36px;padding:0 13px;font-size:.85rem}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{font:600 .9rem/1 var(--f-body);padding:0 16px;min-height:42px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);cursor:pointer;transition:background-color .15s,border-color .15s}
 .chips button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:transparent;box-shadow:inset 0 0 0 1px rgba(23,37,10,.18)}
@@ -104,13 +120,11 @@ input::placeholder,textarea::placeholder{color:var(--muted);opacity:.75}
 .save:active{transform:translateY(1px)}
 .del{font:600 .85rem/1 var(--f-body);min-height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
 .lure .del{margin-top:8px}
+.per{flex-wrap:wrap}
+.per-l{flex-basis:100%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.per-l input{flex:1 1 180px;min-width:0}
 .per>span{min-width:0;overflow-wrap:anywhere}
 .per-r{display:flex;align-items:center;gap:12px;flex:none}
-label.ord{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer}
-label.ord input{width:20px;height:20px;margin:0;accent-color:var(--brand)}
-.orderbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-#ordlist{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
-#ordlist a{display:block;padding:10px 12px;border:1px solid var(--line);border-radius:10px;color:var(--brand);font-weight:600;overflow-wrap:anywhere}
 .lure .del+.save,.lure .save+.del{margin-left:8px}
 .lure label.f{margin-top:10px}
 #tcam{display:inline-flex;align-items:center;gap:8px}
@@ -208,9 +222,8 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 </div>
 <div class="lakebar"><label class="lake-l" for="lk">Lake</label><select id="lk"></select></div>
 <div class="links"><a class="lk" id="gearth" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.6 4 5.6 4 9s-1.2 6.4-4 9c-2.8-2.6-4-5.6-4-9s1.2-6.4 4-9z"/></svg>Google Earth</a><a class="lk" id="gmap" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>Maps</a></div>
-</header>
-
-<details class="box lakeadmin"><summary>Add/Edit Lake</summary>
+<details class="lakeadmin"><summary>Add/Edit Lake</summary>
+<div class="box">
 <p class="sect">Fix the selected lake’s location</p>
 <label class="f">New coordinates or map link<input id="lfix" type="text" maxlength="500" placeholder="32.8123, -95.5678"></label>
 <button type="button" class="save" id="lfb">Update location</button> <button type="button" class="del" id="lfr">Reset</button> <span class="weak" id="lfmsg" role="status"></span>
@@ -219,7 +232,9 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <div class="two"><label class="f">Latitude<input id="lla" type="number" step="any" placeholder="32.82"></label><label class="f">Longitude<input id="llo" type="number" step="any" placeholder="-95.55"></label></div>
 <p class="weak small">Touch and hold the lake in a maps app to see its coordinates. Times are shown in Central time.</p>
 <button type="button" class="save" id="ab">Add lake</button> <span class="weak" id="amsg" role="status"></span>
+</div>
 </details>
+</header>
 
 <div id="pg1">
 <section class="temp" aria-label="Water temperature">
@@ -251,16 +266,15 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 
 </div>
 <div id="pg3" hidden>
-<p class="weak">Baits you add here feed the Lures page. Turn on “Only rank lures from my tackle box” there to rank only what you own.</p>
+<p class="weak">Your tackle box feeds the Lures page. There, choose to rank All lures, Bass Buddy’s Best Baits or My tackle box. You can copy picks from Bass Buddy’s Best Baits (under More) into your box.</p>
 <label class="f">Shop at<select id="vend"></select></label>
-<div class="orderbar"><button type="button" class="save" id="ordgo">Place Order</button><span class="weak" id="ordmsg" role="status">Check “Order” on the baits you want to buy.</span></div>
-<div id="ordlist"></div>
-<p class="weak small" id="affnote2" hidden></p>
+<p class="weak small affn" hidden></p>
 <details class="box" id="tbx" open><summary>My tackle box <span class="weak" id="tcnt"></span></summary>
 <div class="photo-row"><button type="button" class="del" id="tcam" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.2"/></svg>Identify from photo</button><input type="file" id="tphoto" accept="image/*" hidden><span class="weak" id="tstat" role="status"></span></div>
 <label class="f">Bait name<input id="tn" type="text" maxlength="80" placeholder="Red Eye Shad 1/2 oz"></label>
 <label class="f">Type<select id="tc"></select></label>
 <label class="f">Color<input id="tcol" type="text" maxlength="40" placeholder="chartreuse, green pumpkin"></label>
+<label class="f">Amazon link or product code (optional)<input id="tlink" type="text" maxlength="300" placeholder="Paste the product page address from Amazon"></label>
 <button type="button" class="save" id="tadd">Add to tackle box</button> <span class="weak" id="tmsg" role="status"></span>
 <div id="tlist"></div>
 </details>
@@ -269,7 +283,8 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <h2>Best bets right now</h2>
 <p class="weak small">A higher score means a better match for today’s conditions.</p>
 <p class="weak small" id="affnote" hidden>Shop links may earn a commission.</p>
-<label class="box toggle"><span>Only rank lures from my tackle box</span><input type="checkbox" id="tonly" class="switch" checked></label>
+<label class="box f"><span>Rank lures from</span><select id="tsrc"><option value="best">Bass Buddy’s Best Baits</option><option value="all">All lures</option><option value="mine">My tackle box</option></select></label>
+<p class="weak small" id="srcnote" role="status"></p>
 <div id="lures" aria-live="polite"></div>
 
 <h2>Colors and line</h2>
@@ -326,6 +341,14 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <textarea id="xout" rows="6" hidden readonly></textarea>
 </div>
 </div>
+<div id="pg9" hidden>
+<h2>Bass Buddy’s Best Baits</h2>
+<p class="weak">Favorites picked by the app’s author, the same for everyone. Tap Add to copy one into your own tackle box. On the Lures page, choose “Bass Buddy’s Best Baits” to rank lures from this list.</p>
+<p class="weak small affn" hidden></p>
+<div class="box" id="bestbox"><p class="card-title">All picks <span class="weak" id="bcnt"></span></p>
+<div id="blist"></div>
+</div>
+</div>
 <div id="pg8" hidden>
 <h2>Conditions score</h2>
 <div class="box">
@@ -361,7 +384,7 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <p class="foot">A starting point, not a guarantee. Baitfish location, fishing pressure, and the fish’s mood can override any chart. If something isn’t working, change depth or speed before changing lures.</p>
 </main>
 <nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb1" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb5"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Solunar</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
-<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.3"/></svg>Conditions score</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
+<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.3"/></svg>Conditions score</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
 
 <script>
 var G=[
@@ -416,7 +439,7 @@ function render(){
   var t=+document.getElementById("t").value;
   document.getElementById("deg").textContent=t+"°F";
   document.getElementById("phase").textContent=phase(t);
-  var all=L.map(function(l){var x=score(l,t);x.l=l;return x}).sort(function(a,b){return b.s-a.s}),own=$("tonly").checked&&TB.length,r=(own?all.filter(function(x){return TB.some(function(b){return b.c===x.l[0]})}):all).slice(0,5);
+  var all=L.map(function(l){var x=score(l,t);x.l=l;return x}).sort(function(a,b){return b.s-a.s}),src=$("tsrc").value,pool=src==="best"?BEST:src==="mine"?TB:null,r=(pool&&pool.length?all.filter(function(x){return pool.some(function(b){return b.c===x.l[0]})}):all).slice(0,5);$("srcnote").textContent=src==="mine"&&!TB.length?"Your tackle box is empty, so all lures are shown.":"";
   document.getElementById("lures").innerHTML=r.map(function(x){
     var tw=((t<x.l[1]||t>x.l[2])?" Outside its best temperature range.":"")+ownTxt(x.l[0]);
     return '<div class="lure"><div class="lure-h"><h3>'+x.l[0]+'</h3><span class="score">'+(r.indexOf(x)===0?'Best match · ':'')+'Score '+x.s+'</span></div><p class="meta"><span class="depth">'+x.l[3]+'</span>'+x.l[4]+'</p><p class="why">'+
@@ -530,14 +553,13 @@ $("jstart").addEventListener("input",function(){jtUser=true});$("jend").addEvent
 jtSync();
 /* Shop vendors the user can pick from. Amazon uses the Associates tag below. Vendors with no ID still give plain search links. */
 var VEND=[
- {k:"az",n:"Amazon",tag:"lurepicker-20",on:function(){return !!this.tag},u:function(q){return "https://www.amazon.com/s?k="+encodeURIComponent(q)+(this.tag?"&tag="+encodeURIComponent(this.tag):"")}},
- {k:"bp",n:"Bass Pro Shops",on:function(){return false},u:function(q){return "https://www.basspro.com/shop/en/SearchDisplay?searchTerm="+encodeURIComponent(q)}}
+ {k:"az",n:"Amazon",tag:"lurepicker-20",p:function(a){return "https://www.amazon.com/dp/"+a+"?tag="+encodeURIComponent(this.tag)},on:function(){return !!this.tag},u:function(q){return "https://www.amazon.com/s?k="+encodeURIComponent(q)+(this.tag?"&tag="+encodeURIComponent(this.tag):"")}}
 ];
 var vk="az";try{vk=localStorage.getItem("bpv")||"az"}catch(e){}
 function V(){var r=VEND[0];VEND.forEach(function(v){if(v.k===vk)r=v});return r}
 var SHOP={"Jig with craw trailer":"bass jig","Blade bait or jigging spoon":"blade bait","Suspending jerkbait":"jerkbait","Lipless crankbait":"lipless crankbait","Squarebill crankbait":"squarebill crankbait","Deep-diving crankbait":"deep diving crankbait","Spinnerbait":"spinnerbait","Bladed jig (Chatterbait)":"bladed jig","Texas-rig worm or creature":"soft plastic creature bait","Ned rig or wacky worm":"ned rig","Drop shot":"drop shot","Walking topwater or popper":"walking topwater","Buzzbait":"buzzbait","Hollow-body frog":"hollow body frog","Swimbait":"swimbait","Carolina rig":"carolina rig"};
 function shopP(n){if(!SHOP[n])return "";var v=V();return '<p class="why" style="margin-top:8px"><a href="'+esc(v.u(SHOP[n]))+'" target="_blank" rel="noopener noreferrer'+(v.on()?' sponsored':'')+'">Shop at '+esc(v.n)+'</a></p>'}
-function affSync(){var v=V(),n=$("affnote");var t=v.k==="az"?"As an Amazon Associate I earn from qualifying purchases.":"Shop links may earn a commission.",n2=$("affnote2");n.textContent=t;n.hidden=!v.on();if(n2){n2.textContent=t;n2.hidden=!v.on()}}affSync();
+function affSync(){var v=V(),t=v.k==="az"?"As an Amazon Associate I earn from qualifying purchases.":"Shop links may earn a commission.";[].forEach.call(document.querySelectorAll("#affnote,.affn"),function(n){n.textContent=t;n.hidden=!v.on()})}affSync();
 /* Fix lake location */
 $("lfb").onclick=function(){var m=parseLoc($("lfix").value),n=LK[lk][0];if(!m||Math.abs(m[0])>90||Math.abs(m[1])>180){$("lfmsg").textContent="Couldn’t find coordinates. Paste a Google Maps link or type latitude, longitude.";return}selName=n;put("l_",{n:n,la:+m[0].toFixed(5),lo:+m[1].toFixed(5)},"lfmsg");$("lfix").value="";$("lfmsg").textContent="Location updated."};
 $("lfr").onclick=function(){var n=LK[lk][0];if(!BASE.some(function(b){return b[0]===n})){$("lfmsg").textContent="Added lakes can’t be reset. Update the location instead.";return}var a=CL.filter(function(c){return c.n===n});if(!a.length){$("lfmsg").textContent="This lake is already at its original location.";return}selName=n;a.forEach(function(c){del(c.id)});$("lfmsg").textContent="Reset to the original location."};
@@ -612,8 +634,8 @@ function exp(k){
 }
 [].forEach.call(document.querySelectorAll("[data-x]"),function(x){x.onclick=function(){exp(x.getAttribute("data-x"))}});
 /* Tabs */
-function tab(n){["1","2","3","4","5","6","7","8"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===8,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
-$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb8").onclick=function(){tab(8)};$("scgo").onclick=function(){tab(1)};
+function tab(n){["1","2","3","4","5","6","7","8","9"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===8||n===9,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
+$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb8").onclick=function(){tab(8)};$("tb9").onclick=function(){tab(9)};$("scgo").onclick=function(){tab(1)};
 $("tbm").onclick=function(e){e.stopPropagation();var m=$("more");m.hidden=!m.hidden;this.setAttribute("aria-expanded",String(!m.hidden))};
 document.addEventListener("click",function(e){var m=$("more");if(!m.hidden&&!m.contains(e.target)){m.hidden=true;$("tbm").setAttribute("aria-expanded","false")}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("more").hidden=true;$("tbm").setAttribute("aria-expanded","false")}});
@@ -752,30 +774,40 @@ $("wb").onclick=function(){
 /* Tackle box */
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function cws(col){col=(col||"").toLowerCase();var K=[["green pumpkin","watermelon","shad","natural","ghost","pearl","smoke"],["chartreuse","white","bluegill","green pumpkin","pearl"],["black","blue","firetiger","chartreuse","white"]][S.clar],n=0;K.forEach(function(k){if(col.indexOf(k)>=0)n++});if(BF.craw&&/red|brown|orange|pumpkin/.test(col))n++;if(BF.shad&&/white|chrome|pearl|shad|silver/.test(col))n++;if(BF.bg&&/bluegill|bream|green|orange/.test(col))n++;return n}
-function ownTxt(name){var a=TB.filter(function(b){return b.c===name});if(!a.length)return "";a.sort(function(x,y){return cws(y.col)-cws(x.col)});return " You have: "+a.map(function(b){return esc(b.n)+(b.col?" ("+esc(b.col)+")":"")+(cws(b.col)>0?" ✓":"")}).join(", ")+". ✓ means the color fits today."}
+/* Bass Buddy’s Best Baits: the same list for every user. Edit this list to change it. */
+var BEST=[{"n": "Lipless crankbait, purple shad pattern", "c": "Lipless crankbait", "col": "chartreuse, silver/blue holographic, 3/8 oz"}, {"n": "Strike King Red Eyed Shad", "c": "Lipless crankbait", "col": "fire tiger", "asin": "B001I9P4BM"}, {"n": "Rattle Trap 3/8 oz", "c": "Lipless crankbait", "col": "silver, blue back, orange mouth, dot"}, {"n": "Buzz/clacker 1/2 oz", "c": "Buzzbait", "col": "white, silver blades"}, {"n": "Yamamoto 5\" Wacky Worm", "c": "Ned rig or wacky worm", "col": "dark red with blue chips"}, {"n": "Yamamoto 5\" Wacky Worm", "c": "Ned rig or wacky worm", "col": "green pumpkin with gold flakes"}, {"n": "Yamamoto 5\" Wacky Worm", "c": "Ned rig or wacky worm", "col": "black with blue flakes"}, {"n": "Yamamoto 5\" Yamasenko (stick worm), chartreuse tip", "c": "Texas-rig worm or creature", "col": "dark green pumpkin with black flecks"}, {"n": "Missile Baits D Bomb", "c": "Texas-rig worm or creature", "col": "green pumpkin with gold and multicolor flake"}, {"n": "Missile Baits D Bomb (Bruiser Flash)", "c": "Texas-rig worm or creature", "col": "black and blue with blue flake"}, {"n": "6th Sense Congo Craw 3.8 in.", "c": "Texas-rig worm or creature", "col": "Darkwater Bug"}, {"n": "Panorama 3.5 in. soft plastic shad swimbait", "c": "Swimbait", "col": "translucent smoky silver-gray"}, {"n": "6th Sense Juggle Minnow 4.0 in.", "c": "Swimbait", "col": "Ghost Pro Shad"}, {"n": "Berkley PowerBait PowerStinger 3.5 in.", "c": "Swimbait", "col": "Electric Shad"}, {"n": "Bad Shad Trick ShotZ 4.2 in.", "c": "Swimbait", "col": "dark smoky gray/black"}];
+function ownTxt(name){var src=$("tsrc").value,a=(src==="best"?BEST:TB).filter(function(b){return b.c===name});if(!a.length)return "";a.sort(function(x,y){return cws(y.col)-cws(x.col)});return (src==="best"?" Bass Buddy’s pick: ":" You have: ")+a.map(function(b){return esc(b.n)+(b.col?" ("+esc(b.col)+")":"")+(cws(b.col)>0?" ✓":"")}).join(", ")+". ✓ means the color fits today."}
+var tlOpen=null;
+function asinOf(s){s=(s||"").trim();var m=/(?:\/dp\/|\/gp\/product\/|\/gp\/aw\/d\/|\/d\/)([A-Z0-9]{10})(?:[\/?#]|$)/i.exec(s);if(m)return m[1].toUpperCase();return /^[A-Z0-9]{10}$/i.test(s)?s.toUpperCase():""}
+function renderBest(){
+ var L=$("blist"),v=V();L.innerHTML="";$("bcnt").textContent="("+BEST.length+")";
+ BEST.forEach(function(p){
+  var d=h("div","per"),have=TB.some(function(b){return b.n===p.n&&(b.col||"")===(p.col||"")}),btn=h("button","del",have?"In your box":"Add to my box");btn.type="button";btn.style.margin="0";btn.disabled=have;
+  btn.onclick=function(){put("t_",{n:p.n,c:p.c,col:p.col||"",asin:p.asin||"",ts:Date.now()},"tmsg")};
+  d.appendChild(h("span","",p.n+" · "+p.c+(p.col?" · "+p.col:"")));var r=h("div","per-r");r.appendChild(btn);d.appendChild(r);
+  var ll=h("div","per-l"),a=h("a","","Shop at "+v.n);a.href=(p.asin&&v.p)?v.p(p.asin):v.u(p.n);a.target="_blank";a.rel="noopener noreferrer"+(v.on()?" sponsored":"");ll.appendChild(a);d.appendChild(ll);L.appendChild(d)});
+}
 function renderT(){
  var Lt=$("tlist");Lt.innerHTML="";$("tcnt").textContent=TB.length?"("+TB.length+")":"";
  TB.slice().sort(function(x,y){return (x.c+x.n)<(y.c+y.n)?-1:1}).forEach(function(b){
   var d=h("div","per"),x=h("button","del","Remove"),arm=false;x.type="button";x.style.margin="0";
   x.onclick=function(){if(!arm){arm=true;x.textContent="Tap again"}else del(b.id)};
-  var o=h("label","ord"),cb=document.createElement("input");cb.type="checkbox";cb.checked=!!b.ord;cb.setAttribute("aria-label","Order "+b.n);cb.onchange=function(){upd(b.id,{ord:cb.checked})};
-  o.appendChild(cb);o.appendChild(document.createTextNode("Order"));
-  var r=h("div","per-r");r.appendChild(o);r.appendChild(x);
-  d.appendChild(h("span","",b.n+" · "+b.c+(b.col?" · "+b.col:"")));d.appendChild(r);Lt.appendChild(d)});
- var oc=TB.filter(function(b){return b.ord}).length;$("ordgo").textContent=oc?"Place Order ("+oc+")":"Place Order";
+  var r=h("div","per-r");r.appendChild(x);
+  d.appendChild(h("span","",b.n+" · "+b.c+(b.col?" · "+b.col:"")));d.appendChild(r);
+  var ll=h("div","per-l"),sm=function(t,f){var q=h("button","del",t);q.type="button";q.style.minHeight="34px";q.onclick=f;return q};
+  if(b.asin){var al=h("a","","Linked to Amazon ("+b.asin+")");al.href=VEND[0].p(b.asin);al.target="_blank";al.rel="noopener noreferrer sponsored";ll.appendChild(al);ll.appendChild(sm("Remove link",function(){upd(b.id,{asin:""})}))}
+  else if(tlOpen===b.id){var ti=document.createElement("input");ti.type="text";ti.maxLength=300;ti.placeholder="Amazon product page address";ti.setAttribute("aria-label","Amazon link for "+b.n);var tm=h("span","weak","");tm.setAttribute("role","status");
+   ll.appendChild(ti);ll.appendChild(sm("Save link",function(){var a=asinOf(ti.value);if(!a){tm.textContent="No product code found. Paste the full amazon.com address.";return}tlOpen=null;upd(b.id,{asin:a});renderT()}));ll.appendChild(sm("Cancel",function(){tlOpen=null;renderT()}));ll.appendChild(tm)}
+  else ll.appendChild(sm("Add Amazon link",function(){tlOpen=b.id;renderT()}));
+  d.appendChild(ll);Lt.appendChild(d)});
+ renderBest();
  render();
 }
 L.forEach(function(l){var o=document.createElement("option");o.value=l[0];o.textContent=l[0];$("tc").appendChild(o)});
-$("tonly").onchange=render;
-VEND.forEach(function(v){var o=document.createElement("option");o.value=v.k;o.textContent=v.n;$("vend").appendChild(o)});$("vend").value=V().k;
-$("vend").onchange=function(){vk=this.value;try{localStorage.setItem("bpv",vk)}catch(e){}affSync();$("ordlist").innerHTML="";render()};
-$("ordgo").onclick=function(){
- var a=TB.filter(function(b){return b.ord}),m=$("ordmsg"),L=$("ordlist"),v=V();L.innerHTML="";
- if(!a.length){m.textContent="Check “Order” on the baits you want to buy first.";return}
- m.textContent="Open each item at "+v.n+" to add it to your cart."+(v.on()?"":" A single cart isn’t connected yet, so these open a search.");
- a.forEach(function(b){var l=h("a","","Shop: "+b.n+(b.col?" ("+b.col+")":""));l.href=v.u((b.n+" "+(b.col||"")).trim());l.target="_blank";l.rel="noopener noreferrer"+(v.on()?" sponsored":"");L.appendChild(l)});
-};
-$("tadd").onclick=function(){var n=$("tn").value.trim();if(!n){$("tmsg").textContent="Enter a bait name.";return}put("t_",{n:n.slice(0,80),c:$("tc").value,col:$("tcol").value.trim().slice(0,40),ts:Date.now()},"tmsg");$("tn").value="";$("tcol").value="";$("tmsg").textContent="Added."};
+var sv="best";try{sv=localStorage.getItem("bsrc")||"best"}catch(e){}if(["all","best","mine"].indexOf(sv)<0)sv="best";$("tsrc").value=sv;$("tsrc").onchange=function(){try{localStorage.setItem("bsrc",this.value)}catch(e){}render()};
+VEND.forEach(function(v){var o=document.createElement("option");o.value=v.k;o.textContent=v.n;$("vend").appendChild(o)});$("vend").value=V().k;if(VEND.length<2)$("vend").parentNode.hidden=true;
+$("vend").onchange=function(){vk=this.value;try{localStorage.setItem("bpv",vk)}catch(e){}affSync();renderBest();render()};
+$("tadd").onclick=function(){var n=$("tn").value.trim();if(!n){$("tmsg").textContent="Enter a bait name.";return}var lv=$("tlink").value.trim(),as=asinOf(lv);if(lv&&!as){$("tmsg").textContent="No Amazon product code found. Paste the full product page address, or leave it blank.";return}put("t_",{n:n.slice(0,80),c:$("tc").value,col:$("tcol").value.trim().slice(0,40),asin:as,ts:Date.now()},"tmsg");$("tn").value="";$("tcol").value="";$("tlink").value="";$("tmsg").textContent="Added."};
 /* Live wind from the viewer's AccuWeather connector */
 var SV="AccuWeather®",LKEY={},D16=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"],TOWN={"Lake Fork":"Quitman, TX","Bois d’Arc":"Bonham, TX","Richland-Chambers":"Corsicana, TX","Cedar Creek":"Kemp, TX","Purtis Creek":"Eustace, TX","Callender Lake":"Murchison, TX","Lake Tawakoni":"Emory, TX","Lake Palestine":"Chandler, TX","Lake O’ the Pines":"Jefferson, TX","Lake Texoma":"Denison, TX","Ray Roberts":"Pilot Point, TX","Lewisville Lake":"Lewisville, TX","Eagle Mountain":"Azle, TX","Lake Conroe":"Conroe, TX","Sam Rayburn":"Jasper, TX","Toledo Bend":"Hemphill, TX","Choke Canyon":"Three Rivers, TX"};
 async function liveWind(){
