@@ -312,11 +312,26 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 
 </div>
 <div id="pg5" hidden>
+<h2>Bite window</h2>
+<div class="box">
+<div class="sc-top"><div class="sc-num" id="scn">0</div><div><div class="sc-lbl" id="scl"></div><p class="weak small" id="scw"></p></div></div>
+<div class="sc-bar"><i id="scb"></i></div>
+</div>
 <h2>Solunar feeding times</h2>
 <div class="box">
 <div class="dayrow"><button type="button" id="pd" aria-label="Previous day">‹</button><div id="dl"></div><button type="button" id="nd" aria-label="Next day">›</button></div>
 <div id="sol" aria-live="polite"></div>
 </div>
+<h2>Conditions score</h2>
+<div class="box" id="scx">
+<p class="weak small">Water temp, wind, sky, clarity, time and moon come from the Lures page and the lake you picked. Add these two for a fuller score.</p>
+<fieldset><legend>Barometer</legend><div class="chips" id="scp"></div></fieldset>
+<fieldset><legend>Water level</legend><div class="chips" id="scv"></div></fieldset>
+<p class="weak small hint">Check pressure on <a href="https://weather.gov" target="_blank" rel="noopener">weather.gov</a> and lake levels on <a href="https://www.waterdatafortexas.org/reservoirs/statewide" target="_blank" rel="noopener">Water Data for Texas</a>.</p>
+</div>
+<h2>How each factor scores</h2>
+<div class="box" id="scd"></div>
+<button type="button" class="del" id="scgo">Change conditions on the Lures page</button>
 
 </div>
 <div id="pg4" hidden>
@@ -386,22 +401,6 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <div id="glist"></div>
 </div>
 </div>
-<div id="pg8" hidden>
-<h2>Conditions score</h2>
-<div class="box">
-<div class="sc-top"><div class="sc-num" id="scn">0</div><div><div class="sc-lbl" id="scl"></div><p class="weak small" id="scw"></p></div></div>
-<div class="sc-bar"><i id="scb"></i></div>
-</div>
-<div class="box" id="scx">
-<p class="weak small">Water temp, wind, sky, clarity, time and moon come from the Lures page and the lake you picked. Add these two for a fuller score.</p>
-<fieldset><legend>Barometer</legend><div class="chips" id="scp"></div></fieldset>
-<fieldset><legend>Water level</legend><div class="chips" id="scv"></div></fieldset>
-<p class="weak small hint">Check pressure on <a href="https://weather.gov" target="_blank" rel="noopener">weather.gov</a> and lake levels on <a href="https://www.waterdatafortexas.org/reservoirs/statewide" target="_blank" rel="noopener">Water Data for Texas</a>.</p>
-</div>
-<h2>How each factor scores</h2>
-<div class="box" id="scd"></div>
-<button type="button" class="del" id="scgo">Change conditions on the Lures page</button>
-</div>
 <div id="pg7" hidden>
 <h2 id="ch">Contacts</h2>
 <p class="weak">Guides, shops, marinas, and other numbers for the lake you picked. These are separate from your iPhone contacts. To copy them to your phone, use Contacts (VCF) on the Export page, under More.</p>
@@ -420,9 +419,9 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 
 <p class="foot">A starting point, not a guarantee. Baitfish location, fishing pressure, and the fish’s mood can override any chart. If something isn’t working, change depth or speed before changing lures.</p>
 </main>
-<nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb1" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb5"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Solunar</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
+<nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb1" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb5"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Conditions</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
 <div class="pv" id="pv" role="dialog" aria-modal="true" aria-label="Bait photo" hidden><div class="pv-c"><img id="pvi" alt=""><p id="pvt"></p><button type="button" class="save" id="pvx">Close</button></div></div>
-<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb11"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4.5v5M16.5 18l-3-4.2"/></svg>Line and Gear</button><button type="button" id="tb10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2M21.5 9v5"/></svg>Bass Academy</button><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.3"/></svg>Conditions score</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
+<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb11"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4.5v5M16.5 18l-3-4.2"/></svg>Line and Gear</button><button type="button" id="tb10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2M21.5 9v5"/></svg>Bass Academy</button><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
 
 <script>
 var G=[
@@ -672,8 +671,8 @@ function exp(k){
 }
 [].forEach.call(document.querySelectorAll("[data-x]"),function(x){x.onclick=function(){exp(x.getAttribute("data-x"))}});
 /* Tabs */
-function tab(n){["1","2","3","4","5","6","7","8","9","10","11"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===8||n===9||n===10||n===11,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
-$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb8").onclick=function(){tab(8)};$("tb9").onclick=function(){tab(9)};$("tb10").onclick=function(){tab(10)};$("tb11").onclick=function(){tab(11)};$("scgo").onclick=function(){tab(1)};
+function tab(n){["1","2","3","4","5","6","7","9","10","11"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===9||n===10||n===11,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
+$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb9").onclick=function(){tab(9)};$("tb10").onclick=function(){tab(10)};$("tb11").onclick=function(){tab(11)};$("scgo").onclick=function(){tab(1)};
 $("bphoto").onchange=function(){var f=this.files[0];this.value="";var k=bTarget;if(!f||!k)return;$("bmsg").textContent="Saving photo…";thumb(f).then(function(img){if(!img){$("bmsg").textContent="Couldn’t read that image. Try a JPEG or PNG.";return}$("bmsg").textContent="";savePhoto(k,img)})};
 document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("[data-pk]");if(t)openPhoto(t.getAttribute("data-pk"))});
 $("pvx").onclick=closePhoto;$("pv").onclick=function(e){if(e.target===this)closePhoto()};
