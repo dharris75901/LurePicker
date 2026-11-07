@@ -330,7 +330,9 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <label class="f">Notes (depth, what worked)<textarea id="wnote" rows="2" maxlength="500"></textarea></label>
 <button type="button" class="save" id="wb">Save waypoint</button> <span class="weak" id="wmsg" role="status"></span>
 </div>
+<div id="wimp"></div>
 <div id="wlist"></div>
+<div class="box"><p class="weak">Send spots to another angler. The share sheet on an iPhone includes AirDrop.</p><button type="button" class="del" id="wshall">Share all my waypoints</button> <button type="button" class="del" id="wimpf">Import a waypoints file</button><input type="file" id="wfile" accept=".json,application/json" hidden> <span class="weak" id="wsmsg" role="status"></span></div>
 
 </div>
 <div id="pg2" hidden>
@@ -376,6 +378,14 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <p class="weak small">Opens basscademy.com in a new tab.</p>
 </div>
 </div>
+<div id="pg11" hidden>
+<h2>Line and Gear</h2>
+<p class="weak">Fishing line and other gear the app’s author uses. Each one opens on Amazon.</p>
+<p class="weak small affn" hidden></p>
+<div class="box"><p class="card-title">All gear <span class="weak" id="gcnt"></span></p>
+<div id="glist"></div>
+</div>
+</div>
 <div id="pg8" hidden>
 <h2>Conditions score</h2>
 <div class="box">
@@ -412,7 +422,7 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 </main>
 <nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb1" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb5"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Solunar</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
 <div class="pv" id="pv" role="dialog" aria-modal="true" aria-label="Bait photo" hidden><div class="pv-c"><img id="pvi" alt=""><p id="pvt"></p><button type="button" class="save" id="pvx">Close</button></div></div>
-<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2M21.5 9v5"/></svg>Bass Academy</button><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.3"/></svg>Conditions score</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
+<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb11"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4.5v5M16.5 18l-3-4.2"/></svg>Line and Gear</button><button type="button" id="tb10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2M21.5 9v5"/></svg>Bass Academy</button><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.3"/></svg>Conditions score</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
 
 <script>
 var G=[
@@ -662,8 +672,8 @@ function exp(k){
 }
 [].forEach.call(document.querySelectorAll("[data-x]"),function(x){x.onclick=function(){exp(x.getAttribute("data-x"))}});
 /* Tabs */
-function tab(n){["1","2","3","4","5","6","7","8","9","10"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===8||n===9||n===10,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
-$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb8").onclick=function(){tab(8)};$("tb9").onclick=function(){tab(9)};$("tb10").onclick=function(){tab(10)};$("scgo").onclick=function(){tab(1)};
+function tab(n){["1","2","3","4","5","6","7","8","9","10","11"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===8||n===9||n===10||n===11,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
+$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb8").onclick=function(){tab(8)};$("tb9").onclick=function(){tab(9)};$("tb10").onclick=function(){tab(10)};$("tb11").onclick=function(){tab(11)};$("scgo").onclick=function(){tab(1)};
 $("bphoto").onchange=function(){var f=this.files[0];this.value="";var k=bTarget;if(!f||!k)return;$("bmsg").textContent="Saving photo…";thumb(f).then(function(img){if(!img){$("bmsg").textContent="Couldn’t read that image. Try a JPEG or PNG.";return}$("bmsg").textContent="";savePhoto(k,img)})};
 document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("[data-pk]");if(t)openPhoto(t.getAttribute("data-pk"))});
 $("pvx").onclick=closePhoto;$("pv").onclick=function(e){if(e.target===this)closePhoto()};
@@ -716,7 +726,8 @@ function fillLakes(){var s=$("lk");s.innerHTML="";LK.forEach(function(x,i){var o
 function after(){var M={};CL.forEach(function(c){M[c.n]=c});LK=BASE.map(function(b){var o=M[b[0]];return o?[b[0],o.la,o.lo]:b}).concat(Object.keys(M).filter(function(n){return !BASE.some(function(b){return b[0]===n})}).map(function(n){return [n,M[n].la,M[n].lo]}));if(selName){LK.forEach(function(x,i){if(x[0]===selName)lk=i});selName=null}if(lk>=LK.length)lk=0;fillLakes();sol();renderJ();renderW();renderT();renderC();ge()}
 function saveLocal(){try{localStorage.setItem("bpj",JSON.stringify({j:J,c:CL,w:W,t:TB,k:CT,p:PH}))}catch(e){}}
 function loadLocal(){try{var o=JSON.parse(localStorage.getItem("bpj")||"{}");J=o.j||[];CL=o.c||[];W=o.w||[];TB=o.t||[];CT=o.k||[];PH=o.p||[]}catch(e){}$("jstore").textContent="Saved on this device only.";after()}
-function put(kind,v,msg){var id=kind+Date.now();v.id=id;
+var lastId=0;
+function put(kind,v,msg){lastId=Math.max(Date.now(),lastId+1);var id=kind+lastId;v.id=id;
  if(DB&&UID)DB.collection("data/users/"+UID).doc(id).set(v).catch(function(){$(msg).textContent="Couldn’t save. Try again."});
  else{(kind==="j_"?J:kind==="w_"?W:kind==="t_"?TB:kind==="k_"?CT:CL).push(v);saveLocal();after()}}
 function del(id){if(DB&&UID)DB.collection("data/users/"+UID).doc(id).delete();else{J=J.filter(function(x){return x.id!==id});W=W.filter(function(x){return x.id!==id});TB=TB.filter(function(x){return x.id!==id});CT=CT.filter(function(x){return x.id!==id});CL=CL.filter(function(x){return x.id!==id});PH=PH.filter(function(x){return x.id!==id});saveLocal();after()}}
@@ -787,7 +798,8 @@ function renderW(){
   var e=h("button","del","Edit");e.type="button";e.onclick=function(){editW=w.id;renderW()};
   var b=h("button","del","Delete"),arm=false;b.type="button";
   b.onclick=function(){if(!arm){arm=true;b.textContent="Tap again to delete"}else del(w.id)};
-  c.appendChild(e);c.appendChild(b);L.appendChild(c)});
+  var sh=h("button","del","Share"),sm=h("span","weak","");sh.type="button";sm.setAttribute("role","status");sh.onclick=function(){wShare(w,sm)};
+  c.appendChild(e);c.appendChild(sh);c.appendChild(b);c.appendChild(document.createTextNode(" "));c.appendChild(sm);L.appendChild(c)});
  s.value=cur;if(!s.value)s.selectedIndex=0;
 }
 $("wgps").onclick=function(){
@@ -803,11 +815,39 @@ $("wb").onclick=function(){
  put("w_",{n:n.slice(0,60),ty:$("wty").value,la:+la.toFixed(5),lo:+lo.toFixed(5),notes:$("wnote").value.trim().slice(0,500),lake:LK[lk][0],ts:Date.now()},"wmsg");
  $("wn").value=wpre;$("wla").value="";$("wlo").value="";$("wnote").value="";$("wmsg").textContent="Waypoint saved.";
 };
+/* Share waypoints (link or file) */
+function b64e(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}
+function b64d(t){t=t.replace(/-/g,"+").replace(/_/g,"/");while(t.length%4)t+="=";return JSON.parse(decodeURIComponent(escape(atob(t))))}
+function cleanW(x){if(!x||typeof x!=="object")return null;var a=parseFloat(x.la),o=parseFloat(x.lo),n=String(x.n||"").trim().slice(0,60);if(!n||!(a>=-60&&a<=70)||!(o>=-180&&o<=180))return null;return {n:n,ty:String(x.ty||"Other").slice(0,30),la:+a.toFixed(5),lo:+o.toFixed(5),notes:String(x.notes||"").slice(0,500),lake:String(x.lake||"").slice(0,80)}}
+function wLink(w){return location.href.split("#")[0]+"#wp="+b64e({n:w.n,ty:w.ty,la:w.la,lo:w.lo,notes:w.notes||"",lake:w.lake})}
+function copyOut(t,m){var f=function(){m.textContent=t};try{navigator.clipboard.writeText(t).then(function(){m.textContent="Copied. Paste it into a message."},f)}catch(e){f()}}
+function wShare(w,m){var u=wLink(w);m.textContent="";
+ if(navigator.share){navigator.share({title:"Waypoint: "+w.n,text:"Bass Buddy waypoint: "+w.n,url:u}).catch(function(e){if(!e||e.name!=="AbortError")copyOut(u,m)})}else copyOut(u,m)}
+function showImp(list){var B=$("wimp");B.innerHTML="";if(!list.length)return;var c=h("div","lure");
+ c.appendChild(h("h3","",list.length===1?"Waypoint shared with you":list.length+" waypoints shared with you"));
+ list.slice(0,6).forEach(function(w){c.appendChild(h("p","meta",w.n+" · "+w.ty+" · "+w.la+", "+w.lo))});
+ if(list.length>6)c.appendChild(h("p","meta","and "+(list.length-6)+" more"));
+ var sv=h("button","save","Save to my waypoints"),dm=h("button","del","Dismiss"),m=h("span","weak","");sv.type="button";dm.type="button";m.setAttribute("role","status");
+ sv.onclick=function(){var names=LK.map(function(x){return x[0]}),n=0;
+  list.forEach(function(w){if(W.some(function(e){return e.n===w.n&&e.la===w.la&&e.lo===w.lo}))return;
+   put("w_",{n:w.n,ty:w.ty,la:w.la,lo:w.lo,notes:w.notes,lake:names.indexOf(w.lake)>=0?w.lake:LK[lk][0],ts:Date.now()},"wmsg");n++});
+  B.innerHTML="";$("wsmsg").textContent=n?n+" saved.":"Already in your list."};
+ dm.onclick=function(){B.innerHTML=""};
+ c.appendChild(sv);c.appendChild(document.createTextNode(" "));c.appendChild(dm);c.appendChild(document.createTextNode(" "));c.appendChild(m);B.appendChild(c);tab(4)}
+function checkHash(){var m=/^#wp=([A-Za-z0-9_-]+)$/.exec(location.hash||"");if(!m)return;try{var c=cleanW(b64d(m[1]));if(c)showImp([c])}catch(e){}try{history.replaceState(null,"",location.href.split("#")[0])}catch(e){}}
+window.addEventListener("hashchange",checkHash);setTimeout(checkHash,500);
+$("wshall").onclick=function(){var m=$("wsmsg");if(!W.length){m.textContent="No waypoints to share yet.";return}
+ var data=JSON.stringify({bassbuddy:"waypoints",w:W.map(function(w){return {n:w.n,ty:w.ty,la:w.la,lo:w.lo,notes:w.notes||"",lake:w.lake}})}),f=null;
+ try{f=new File([data],"bass-buddy-waypoints.json",{type:"application/json"})}catch(e){}
+ if(f&&navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:"Bass Buddy waypoints"}).catch(function(e){if(!e||e.name!=="AbortError")m.textContent="Couldn’t open the share sheet."});return}
+ try{var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([data],{type:"application/json"}));a.download="bass-buddy-waypoints.json";document.body.appendChild(a);a.click();a.remove();m.textContent="File saved to your downloads."}catch(e){m.textContent="Sharing a file isn’t available here."}};
+$("wimpf").onclick=function(){$("wfile").click()};
+$("wfile").onchange=function(){var f=this.files[0];this.value="";if(!f)return;var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result),a=(o&&o.w||[]).slice(0,200).map(cleanW).filter(Boolean);if(!a.length){$("wsmsg").textContent="No waypoints found in that file.";return}$("wsmsg").textContent="";showImp(a)}catch(e){$("wsmsg").textContent="That file isn’t a waypoints file."}};r.readAsText(f)};
 /* Tackle box */
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function cws(col){col=(col||"").toLowerCase();var K=[["green pumpkin","watermelon","shad","natural","ghost","pearl","smoke"],["chartreuse","white","bluegill","green pumpkin","pearl"],["black","blue","firetiger","chartreuse","white"]][S.clar],n=0;K.forEach(function(k){if(col.indexOf(k)>=0)n++});if(BF.craw&&/red|brown|orange|pumpkin/.test(col))n++;if(BF.shad&&/white|chrome|pearl|shad|silver/.test(col))n++;if(BF.bg&&/bluegill|bream|green|orange/.test(col))n++;return n}
 /* Bass Buddy’s Best Baits: the same list for every user. Edit this list to change it. */
-var BEST=[{"n": "Booyah Bait Spinner 3/8 oz (gold tandem willow)", "c": "Spinnerbait", "col": "shad gold shiner", "asin": "B003TI3V42"}, {"n": "6th Sense Panorama Soft Plastic Swimbait", "c": "Swimbait", "col": "Gizzard Shad", "asin": "B0CS4CMKL3"}, {"n": "Yamamoto Senko 5 in.", "c": "Ned rig or wacky worm", "col": "watermelon with green flake", "asin": "B000EQPBDQ"}, {"n": "Yamamoto Senko 5 in.", "c": "Ned rig or wacky worm", "col": "green pumpkin seed with red flakes", "asin": "B000EQPBDQ"}, {"n": "Yamamoto Senko 5 in.", "c": "Ned rig or wacky worm", "col": "green with chartreuse tip", "asin": "B000EQPBDQ"}, {"n": "Strike King Hack Attack Heavy Cover Jig 3/4 oz", "c": "Jig with craw trailer", "col": "", "asin": "B0043F0N8C"}, {"n": "River2Sea Whopper Plopper WPL90", "c": "Walking topwater or popper", "col": "", "asin": "B00R0QA6Y2"}, {"n": "Zoom Trick Worm 6 3/4 in. (pack of 20)", "c": "Texas-rig worm or creature", "col": "", "asin": "B003TT2ILS"}, {"n": "BOOYAH One Knocker", "c": "Lipless crankbait", "col": "", "asin": "B018KMB3S2"}, {"n": "H&H Single Spinner HHSS110-08", "c": "Spinnerbait", "col": "white", "asin": "B003CTOAIO"}, {"n": "H&H Single Spinner HHSS110-08", "c": "Spinnerbait", "col": "white/yellow skirt", "asin": "B003CTOAIO"}, {"n": "TRUSCEND Shadtale Easy Catch Swimbait", "c": "Swimbait", "col": "", "asin": "B08S6WVVL2"}, {"n": "Missile Baits D Bomb Creature", "c": "Texas-rig worm or creature", "col": "blue", "asin": "B081ZCPDD6"}, {"n": "Missile Baits D Bomb Creature", "c": "Texas-rig worm or creature", "col": "green pumpkin", "asin": "B081ZCPDD6"}, {"n": "Strike King KVD 1.5 Hard Knock Square Bill 3/8 oz", "c": "Squarebill crankbait", "col": "chartreuse and blue", "asin": "B018KMCNNQ"}];
+var BEST=[{"n": "Booyah Bait Spinner 3/8 oz (gold tandem willow)", "c": "Spinnerbait", "col": "shad gold shiner", "asin": "B003TI3V42"}, {"n": "6th Sense Panorama Soft Plastic Swimbait", "c": "Swimbait", "col": "Gizzard Shad", "asin": "B0CS4CMKL3"}, {"n": "Yamamoto Senko 5 in.", "c": "Ned rig or wacky worm", "col": "watermelon with green flake", "asin": "B000EQPBDQ"}, {"n": "Yamamoto Senko 5 in.", "c": "Ned rig or wacky worm", "col": "green pumpkin seed with red flakes", "asin": "B000EQPBDQ"}, {"n": "Yamamoto Senko 5 in.", "c": "Ned rig or wacky worm", "col": "green with chartreuse tip", "asin": "B000EQPBDQ"}, {"n": "Strike King Hack Attack Heavy Cover Jig 3/4 oz", "c": "Jig with craw trailer", "col": "", "asin": "B0043F0N8C"}, {"n": "River2Sea Whopper Plopper WPL90", "c": "Walking topwater or popper", "col": "", "asin": "B00R0QA6Y2"}, {"n": "Zoom Trick Worm 6 3/4 in. (pack of 20)", "c": "Texas-rig worm or creature", "col": "", "asin": "B003TT2ILS"}, {"n": "BOOYAH One Knocker", "c": "Lipless crankbait", "col": "", "asin": "B018KMB3S2"}, {"n": "H&H Single Spinner HHSS110-08", "c": "Spinnerbait", "col": "white", "asin": "B003CTOAIO"}, {"n": "H&H Single Spinner HHSS110-08", "c": "Spinnerbait", "col": "white/yellow skirt", "asin": "B003CTOAIO"}, {"n": "TRUSCEND Shadtale Easy Catch Swimbait", "c": "Swimbait", "col": "", "asin": "B08S6WVVL2"}, {"n": "Missile Baits D Bomb Creature", "c": "Texas-rig worm or creature", "col": "blue", "asin": "B081ZCPDD6"}, {"n": "Missile Baits D Bomb Creature", "c": "Texas-rig worm or creature", "col": "green pumpkin", "asin": "B081ZCPDD6"}, {"n": "Strike King KVD 1.5 Hard Knock Square Bill 3/8 oz", "c": "Squarebill crankbait", "col": "chartreuse and blue", "asin": "B018KMCNNQ"}, {"n": "Berkley PowerBait Power Worms", "c": "Texas-rig worm or creature", "col": "black with blue fleck", "asin": "B00EO96994"}, {"n": "Strike King Rage Bug 4 in.", "c": "Texas-rig worm or creature", "col": "black/blue fleck", "asin": "B00LDYOW0Q"}, {"n": "Strike King Rage Tail Toad", "c": "Texas-rig worm or creature", "col": "white", "asin": "B003THI2JC"}, {"n": "BOOYAH Buzz Buzzbait", "c": "Buzzbait", "col": "snow white shad", "asin": "B003ND5FO2"}];
 function hk(n,c){var t=((n||"")+"|"+(c||"")).toLowerCase(),x=0,i;for(i=0;i<t.length;i++)x=(x*31+t.charCodeAt(i))|0;return (x>>>0).toString(36)}
 function photoOf(k){var r=null;PH.forEach(function(x){if(x.k===k)r=x.img});if(r)return r;BEST.forEach(function(b){if(!r&&b.img&&hk(b.n,b.col)===k)r=b.img});return r}
 function openPhoto(k){var img=photoOf(k),m=PKM[k]||{n:"Bait",col:""};if(!img)return;$("pvi").src=img;$("pvi").alt=m.n;$("pvt").textContent=m.n+(m.col?" · "+m.col:"");$("pv").hidden=false;$("pvx").focus()}
@@ -824,7 +864,12 @@ function ownTxt(name){var src=$("tsrc").value,anyp=false,parts=[];
  if(!parts.length)return "";return " "+parts.join(" ")+" ✓ means the color fits today."+(anyp?" Tap an underlined bait to see its photo.":"")}
 var tlOpen=null;
 function asinOf(s){s=(s||"").trim();var m=/(?:\/dp\/|\/gp\/product\/|\/gp\/aw\/d\/|\/d\/)([A-Z0-9]{10})(?:[\/?#]|$)/i.exec(s);if(m)return m[1].toUpperCase();return /^[A-Z0-9]{10}$/i.test(s)?s.toUpperCase():""}
-function renderBest(){
+/* Line and gear: edit this list to change the Line and Gear page. */
+var GEAR=[{"n": "Beyond Braid 8X No Fade Braided Line", "d": "Yellow, 8 strand, 20 lb", "link": "https://www.amazon.com/buy-for-me/product/B0HK8NF5TH?merchantId=A2HNLV2JYV3JD6&linkCode=ll2&tag=lurepicker-20&linkId=ab47564577dcc97a166db7753b052d7e&language=en_US&ref_=as_li_ss_tl"}, {"n": "Reaction Tackle 100% Fluorocarbon Fishing Line", "d": "Pro grade leader", "asin": "B07HDH9S14"}, {"n": "Berkley Trilene Big Game Monofilament Fishing Line", "d": "Fill spool", "asin": "B000B5A69Y"}, {"n": "Gamakatsu G-Finesse Hybrid Worm Hook 366214", "d": "Size 4/0", "asin": "B077GXWYFJ"}, {"n": "Gamakatsu Drop Shot Hook", "d": "Size 2", "asin": "B003FREILW"}, {"n": "Lew’s MACH Smash Baitcast Reel and Rod Combo", "d": "7 ft, 1-piece rod, right-hand retrieve", "asin": "B0G86NYJ5X"}, {"n": "Lew’s MACH Smash Spinning Reel and Rod Combo", "d": "7 ft, 2-piece rod", "asin": "B0G885LR7Z"}, {"n": "Evolution Fishing BallistiX Blade Runner Tackle Tray", "d": "", "asin": "B0G4VYDNJ9"}, {"n": "Beyond Fishing Hauler Tackle Bags", "d": "", "asin": "B0FB4C1VHD"}, {"n": "Beyond Fishing Pro Fishing Shears", "d": "6.5 in.", "asin": "B0FQPKQVWN"}, {"n": "Evolution Fishing BallistiX HANGR 3.7D Tackle Tray", "d": "", "asin": "B0DYXZDZ85"}, {"n": "Evolution Fishing BallistiX Terminal Tackle Tray", "d": "", "asin": "B0DYXRZSVV"}, {"n": "Reaction Tackle Clear Bait Bags for Soft Plastics", "d": "11 x 9.5 in.", "asin": "B0G6NQH5ZJ"}];
+function renderGear(){var L=$("glist"),v=V();if(!L)return;L.innerHTML="";$("gcnt").textContent="("+GEAR.length+")";
+ GEAR.forEach(function(g){var d=h("div","per"),lf=h("div","per-n");lf.appendChild(h("span","",g.n+(g.d?" · "+g.d:"")));d.appendChild(lf);
+  var ll=h("div","per-l"),a=h("a","","Shop at "+v.n);a.href=g.link?g.link:(g.asin&&v.p)?v.p(g.asin):v.u(g.n);a.target="_blank";a.rel="noopener noreferrer"+(v.on()?" sponsored":"");ll.appendChild(a);d.appendChild(ll);L.appendChild(d)})}
+function renderBest(){renderGear();
  var L=$("blist"),v=V();L.innerHTML="";$("bcnt").textContent="("+BEST.length+")";
  BEST.forEach(function(p){
   var d=h("div","per"),have=TB.some(function(b){return b.n===p.n&&(b.col||"")===(p.col||"")}),btn=h("button","del",have?"In your box":"Add to my box");btn.type="button";btn.style.margin="0";btn.disabled=have;
