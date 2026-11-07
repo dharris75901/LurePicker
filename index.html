@@ -1,10 +1,14 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bass Buddy">
+<meta name="theme-color" content="#0f5360">
 <title>Bass Fishing Buddy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +53,19 @@ a{color:var(--focus);font-weight:600;text-underline-offset:3px}
 .hero select option{color:var(--ink);background:var(--surface)}
 .links{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .lk{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-weight:600;font-size:.9rem;text-decoration:none}
+.th{padding:0;border:0;background:none;width:44px;height:44px;border-radius:10px;overflow:hidden;flex:none;cursor:pointer;min-height:0}
+.th img{width:100%;height:100%;object-fit:cover;display:block}
+.pk{font:inherit;color:var(--brand);text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:0;min-height:0;cursor:pointer;text-align:left}
+.per-n{display:flex;align-items:center;gap:10px;min-width:0}
+.per-n>span{min-width:0;overflow-wrap:anywhere}
+.pv{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:rgba(5,20,25,.72);padding:16px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+.pv-c{background:var(--surface);color:var(--ink);border-radius:20px;padding:14px;max-width:min(100%,520px);display:grid;gap:10px;justify-items:center}
+.pv img{max-width:100%;max-height:62vh;border-radius:12px;display:block;object-fit:contain}
+.pv p{margin:0;font-weight:600;text-align:center}
+a.lnk-btn{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:14px;text-decoration:none;font-weight:700}
+.bb-h{display:flex;align-items:center;gap:12px}
+.bb-h svg{width:52px;height:52px;flex:none}
+.bb-h h2{margin:0}
 .lakeadmin summary{justify-content:center;min-height:46px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:.9rem;font-weight:600}
 .lakeadmin summary::after{margin-left:2px;border-color:#fff}
 .lakeadmin>.box{margin-top:10px;color:var(--ink)}
@@ -283,7 +300,7 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <h2>Best bets right now</h2>
 <p class="weak small">A higher score means a better match for today’s conditions.</p>
 <p class="weak small" id="affnote" hidden>Shop links may earn a commission.</p>
-<label class="box f"><span>Rank lures from</span><select id="tsrc"><option value="best">Bass Buddy’s Best Baits</option><option value="all">All lures</option><option value="mine">My tackle box</option></select></label>
+<label class="box f"><span>Rank lures from</span><select id="tsrc"><option value="all">All lures</option><option value="best">Bass Buddy’s Best Baits</option><option value="mine">My tackle box</option></select></label>
 <p class="weak small" id="srcnote" role="status"></p>
 <div id="lures" aria-live="polite"></div>
 
@@ -342,11 +359,21 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 </div>
 </div>
 <div id="pg9" hidden>
-<h2>Bass Buddy’s Best Baits</h2>
-<p class="weak">Favorites picked by the app’s author, the same for everyone. Tap Add to copy one into your own tackle box. On the Lures page, choose “Bass Buddy’s Best Baits” to rank lures from this list.</p>
+<div class="bb-h"><svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l11 13"/><path d="M14 27C20 14 44 14 53 27 45 41 22 41 14 27z" fill="var(--accent)"/><path d="M13 28L5 35l11-1z" fill="var(--brand)"/><circle cx="23" cy="25" r="2.3" fill="var(--brand)" stroke="none"/><path d="M33 18q4 9-1 18" opacity=".5"/><path d="M30 38v8m0 0q-5 5-9 1m9-1q5 5 9 1"/><path d="M53 27h5m0 0q4 3 1 7m-1-7q-4 2-3 6"/></svg><h2>Bass Buddy’s Best Baits</h2></div>
+<p class="weak">Favorites picked by the app’s author, the same for everyone. Tap Add to copy one into your own tackle box. Tap Add photo to attach a picture; it shows when you tap that bait on the Lures or Tackle page. Photos you add are saved only for you. On the Lures page, choose “Bass Buddy’s Best Baits” to rank lures from this list.</p>
 <p class="weak small affn" hidden></p>
+<p class="weak small" id="bmsg" role="status"></p>
+<input type="file" id="bphoto" accept="image/*" hidden>
 <div class="box" id="bestbox"><p class="card-title">All picks <span class="weak" id="bcnt"></span></p>
 <div id="blist"></div>
+</div>
+</div>
+<div id="pg10" hidden>
+<h2>Bass Academy</h2>
+<div class="box">
+<p>A data-driven bass fishing resource that looks at bait performance, seasonal patterns and techniques using thousands of angler reports from across North America.</p>
+<a class="save lnk-btn" href="https://basscademy.com" target="_blank" rel="noopener noreferrer">Open Bass Academy</a>
+<p class="weak small">Opens basscademy.com in a new tab.</p>
 </div>
 </div>
 <div id="pg8" hidden>
@@ -384,7 +411,8 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <p class="foot">A starting point, not a guarantee. Baitfish location, fishing pressure, and the fish’s mood can override any chart. If something isn’t working, change depth or speed before changing lures.</p>
 </main>
 <nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb1" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb5"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Solunar</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
-<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.3"/></svg>Conditions score</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
+<div class="pv" id="pv" role="dialog" aria-modal="true" aria-label="Bait photo" hidden><div class="pv-c"><img id="pvi" alt=""><p id="pvt"></p><button type="button" class="save" id="pvx">Close</button></div></div>
+<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2M21.5 9v5"/></svg>Bass Academy</button><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.3"/></svg>Conditions score</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
 
 <script>
 var G=[
@@ -634,8 +662,12 @@ function exp(k){
 }
 [].forEach.call(document.querySelectorAll("[data-x]"),function(x){x.onclick=function(){exp(x.getAttribute("data-x"))}});
 /* Tabs */
-function tab(n){["1","2","3","4","5","6","7","8","9"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===8||n===9,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
-$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb8").onclick=function(){tab(8)};$("tb9").onclick=function(){tab(9)};$("scgo").onclick=function(){tab(1)};
+function tab(n){["1","2","3","4","5","6","7","8","9","10"].forEach(function(i){var on=i===String(n),b=$("tb"+i);$("pg"+i).hidden=!on;if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});$("pg1b").hidden=String(n)!=="1";var mo=n===6||n===7||n===8||n===9||n===10,mb=$("tbm");if(mo)mb.setAttribute("aria-current","page");else mb.removeAttribute("aria-current");$("more").hidden=true;mb.setAttribute("aria-expanded","false");try{window.scrollTo(0,0)}catch(e){}}
+$("tb1").onclick=function(){tab(1)};$("tb2").onclick=function(){tab(2)};$("tb3").onclick=function(){tab(3)};$("tb4").onclick=function(){tab(4)};$("tb5").onclick=function(){tab(5)};$("tb6").onclick=function(){tab(6)};$("tb7").onclick=function(){tab(7)};$("tb8").onclick=function(){tab(8)};$("tb9").onclick=function(){tab(9)};$("tb10").onclick=function(){tab(10)};$("scgo").onclick=function(){tab(1)};
+$("bphoto").onchange=function(){var f=this.files[0];this.value="";var k=bTarget;if(!f||!k)return;$("bmsg").textContent="Saving photo…";thumb(f).then(function(img){if(!img){$("bmsg").textContent="Couldn’t read that image. Try a JPEG or PNG.";return}$("bmsg").textContent="";savePhoto(k,img)})};
+document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("[data-pk]");if(t)openPhoto(t.getAttribute("data-pk"))});
+$("pvx").onclick=closePhoto;$("pv").onclick=function(e){if(e.target===this)closePhoto()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("pv").hidden)closePhoto()});
 $("tbm").onclick=function(e){e.stopPropagation();var m=$("more");m.hidden=!m.hidden;this.setAttribute("aria-expanded",String(!m.hidden))};
 document.addEventListener("click",function(e){var m=$("more");if(!m.hidden&&!m.contains(e.target)){m.hidden=true;$("tbm").setAttribute("aria-expanded","false")}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("more").hidden=true;$("tbm").setAttribute("aria-expanded","false")}});
@@ -679,15 +711,15 @@ var NM=["New moon","Waxing crescent","First quarter","Waxing gibbous","Full moon
 function mp(ms){var d=dd(ms),el=norm(moon(d).lon-sun(d).lon);return NM[Math.round(((el/R+360)%360)/45)%8]+", "+Math.round((1-Math.cos(el))/2*100)+"% lit"}
 function $(i){return document.getElementById(i)}
 function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
-var J=[],CL=[],W=[],TB=[],CT=[],DB=null,UID=null;
+var J=[],CL=[],W=[],TB=[],CT=[],PH=[],PKM={},bTarget=null,DB=null,UID=null;
 function fillLakes(){var s=$("lk");s.innerHTML="";LK.forEach(function(x,i){var o=document.createElement("option");o.value=i;o.textContent=x[0];s.appendChild(o)});s.value=lk}
 function after(){var M={};CL.forEach(function(c){M[c.n]=c});LK=BASE.map(function(b){var o=M[b[0]];return o?[b[0],o.la,o.lo]:b}).concat(Object.keys(M).filter(function(n){return !BASE.some(function(b){return b[0]===n})}).map(function(n){return [n,M[n].la,M[n].lo]}));if(selName){LK.forEach(function(x,i){if(x[0]===selName)lk=i});selName=null}if(lk>=LK.length)lk=0;fillLakes();sol();renderJ();renderW();renderT();renderC();ge()}
-function saveLocal(){try{localStorage.setItem("bpj",JSON.stringify({j:J,c:CL,w:W,t:TB,k:CT}))}catch(e){}}
-function loadLocal(){try{var o=JSON.parse(localStorage.getItem("bpj")||"{}");J=o.j||[];CL=o.c||[];W=o.w||[];TB=o.t||[];CT=o.k||[]}catch(e){}$("jstore").textContent="Saved on this device only.";after()}
+function saveLocal(){try{localStorage.setItem("bpj",JSON.stringify({j:J,c:CL,w:W,t:TB,k:CT,p:PH}))}catch(e){}}
+function loadLocal(){try{var o=JSON.parse(localStorage.getItem("bpj")||"{}");J=o.j||[];CL=o.c||[];W=o.w||[];TB=o.t||[];CT=o.k||[];PH=o.p||[]}catch(e){}$("jstore").textContent="Saved on this device only.";after()}
 function put(kind,v,msg){var id=kind+Date.now();v.id=id;
  if(DB&&UID)DB.collection("data/users/"+UID).doc(id).set(v).catch(function(){$(msg).textContent="Couldn’t save. Try again."});
  else{(kind==="j_"?J:kind==="w_"?W:kind==="t_"?TB:kind==="k_"?CT:CL).push(v);saveLocal();after()}}
-function del(id){if(DB&&UID)DB.collection("data/users/"+UID).doc(id).delete();else{J=J.filter(function(x){return x.id!==id});W=W.filter(function(x){return x.id!==id});TB=TB.filter(function(x){return x.id!==id});CT=CT.filter(function(x){return x.id!==id});CL=CL.filter(function(x){return x.id!==id});saveLocal();after()}}
+function del(id){if(DB&&UID)DB.collection("data/users/"+UID).doc(id).delete();else{J=J.filter(function(x){return x.id!==id});W=W.filter(function(x){return x.id!==id});TB=TB.filter(function(x){return x.id!==id});CT=CT.filter(function(x){return x.id!==id});CL=CL.filter(function(x){return x.id!==id});PH=PH.filter(function(x){return x.id!==id});saveLocal();after()}}
 function upd(id,p){var r=null;[J,W,TB,CT,CL].forEach(function(a){a.forEach(function(x){if(x.id===id)r=x})});if(!r)return;var m=Object.assign({},r,p);
  if(DB&&UID)DB.collection("data/users/"+UID).doc(id).set(m).catch(function(){});else{Object.assign(r,p);saveLocal();after()}}
 function renderJ(){
@@ -775,8 +807,17 @@ $("wb").onclick=function(){
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function cws(col){col=(col||"").toLowerCase();var K=[["green pumpkin","watermelon","shad","natural","ghost","pearl","smoke"],["chartreuse","white","bluegill","green pumpkin","pearl"],["black","blue","firetiger","chartreuse","white"]][S.clar],n=0;K.forEach(function(k){if(col.indexOf(k)>=0)n++});if(BF.craw&&/red|brown|orange|pumpkin/.test(col))n++;if(BF.shad&&/white|chrome|pearl|shad|silver/.test(col))n++;if(BF.bg&&/bluegill|bream|green|orange/.test(col))n++;return n}
 /* Bass Buddy’s Best Baits: the same list for every user. Edit this list to change it. */
-var BEST=[{"n": "Lipless crankbait, purple shad pattern", "c": "Lipless crankbait", "col": "chartreuse, silver/blue holographic, 3/8 oz"}, {"n": "Strike King Red Eyed Shad", "c": "Lipless crankbait", "col": "fire tiger", "asin": "B001I9P4BM"}, {"n": "Rattle Trap 3/8 oz", "c": "Lipless crankbait", "col": "silver, blue back, orange mouth, dot"}, {"n": "Buzz/clacker 1/2 oz", "c": "Buzzbait", "col": "white, silver blades"}, {"n": "Yamamoto 5\" Wacky Worm", "c": "Ned rig or wacky worm", "col": "dark red with blue chips"}, {"n": "Yamamoto 5\" Wacky Worm", "c": "Ned rig or wacky worm", "col": "green pumpkin with gold flakes"}, {"n": "Yamamoto 5\" Wacky Worm", "c": "Ned rig or wacky worm", "col": "black with blue flakes"}, {"n": "Yamamoto 5\" Yamasenko (stick worm), chartreuse tip", "c": "Texas-rig worm or creature", "col": "dark green pumpkin with black flecks"}, {"n": "Missile Baits D Bomb", "c": "Texas-rig worm or creature", "col": "green pumpkin with gold and multicolor flake"}, {"n": "Missile Baits D Bomb (Bruiser Flash)", "c": "Texas-rig worm or creature", "col": "black and blue with blue flake"}, {"n": "6th Sense Congo Craw 3.8 in.", "c": "Texas-rig worm or creature", "col": "Darkwater Bug"}, {"n": "Panorama 3.5 in. soft plastic shad swimbait", "c": "Swimbait", "col": "translucent smoky silver-gray"}, {"n": "6th Sense Juggle Minnow 4.0 in.", "c": "Swimbait", "col": "Ghost Pro Shad"}, {"n": "Berkley PowerBait PowerStinger 3.5 in.", "c": "Swimbait", "col": "Electric Shad"}, {"n": "Bad Shad Trick ShotZ 4.2 in.", "c": "Swimbait", "col": "dark smoky gray/black"}];
-function ownTxt(name){var src=$("tsrc").value,a=(src==="best"?BEST:TB).filter(function(b){return b.c===name});if(!a.length)return "";a.sort(function(x,y){return cws(y.col)-cws(x.col)});return (src==="best"?" Bass Buddy’s pick: ":" You have: ")+a.map(function(b){return esc(b.n)+(b.col?" ("+esc(b.col)+")":"")+(cws(b.col)>0?" ✓":"")}).join(", ")+". ✓ means the color fits today."}
+var BEST=[{"n": "Booyah Bait Spinner 3/8 oz (gold tandem willow)", "c": "Spinnerbait", "col": "shad gold shiner", "asin": "B003TI3V42"}, {"n": "6th Sense Panorama Soft Plastic Swimbait", "c": "Swimbait", "col": "Gizzard Shad", "asin": "B0CS4CMKL3"}, {"n": "Yamamoto Senko 5 in.", "c": "Ned rig or wacky worm", "col": "watermelon with green flake", "asin": "B000EQPBDQ"}];
+function hk(n,c){var t=((n||"")+"|"+(c||"")).toLowerCase(),x=0,i;for(i=0;i<t.length;i++)x=(x*31+t.charCodeAt(i))|0;return (x>>>0).toString(36)}
+function photoOf(k){var r=null;PH.forEach(function(x){if(x.k===k)r=x.img});if(r)return r;BEST.forEach(function(b){if(!r&&b.img&&hk(b.n,b.col)===k)r=b.img});return r}
+function openPhoto(k){var img=photoOf(k),m=PKM[k]||{n:"Bait",col:""};if(!img)return;$("pvi").src=img;$("pvi").alt=m.n;$("pvt").textContent=m.n+(m.col?" · "+m.col:"");$("pv").hidden=false;$("pvx").focus()}
+function closePhoto(){$("pv").hidden=true;$("pvi").removeAttribute("src")}
+async function thumb(f){try{var bm=await createImageBitmap(f),s=Math.min(1,480/Math.max(bm.width,bm.height)),c=document.createElement("canvas");c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);var q=0.8,u=c.toDataURL("image/jpeg",q);while(u.length>150000&&q>0.4){q-=0.1;u=c.toDataURL("image/jpeg",q)}return u}catch(e){return ""}}
+function savePhoto(k,img){var id="p_"+k,v={id:id,k:k,img:img};
+ if(DB&&UID)DB.collection("data/users/"+UID).doc(id).set(v).catch(function(){$("bmsg").textContent="Couldn’t save the photo. Try a smaller one."});
+ else{PH=PH.filter(function(x){return x.k!==k});PH.push(v);saveLocal();after()}}
+function thBtn(k,label){var b=h("button","th"),im=document.createElement("img");b.type="button";im.src=photoOf(k);im.alt="";b.appendChild(im);b.setAttribute("aria-label","Show photo of "+label);b.onclick=function(){openPhoto(k)};return b}
+function ownTxt(name){var src=$("tsrc").value,a=(src==="best"?BEST:TB).filter(function(b){return b.c===name});if(!a.length)return "";a.sort(function(x,y){return cws(y.col)-cws(x.col)});var anyp=false,out=(src==="best"?" Bass Buddy’s pick: ":" You have: ")+a.map(function(b){var k=hk(b.n,b.col),t=esc(b.n)+(b.col?" ("+esc(b.col)+")":"")+(cws(b.col)>0?" ✓":"");if(photoOf(k)){anyp=true;PKM[k]={n:b.n,col:b.col};return '<button type="button" class="pk" data-pk="'+k+'" aria-label="Show photo of '+esc(b.n)+'">'+t+"</button>"}return t}).join(", ")+". ✓ means the color fits today."+(anyp?" Tap an underlined bait to see its photo.":"");return out}
 var tlOpen=null;
 function asinOf(s){s=(s||"").trim();var m=/(?:\/dp\/|\/gp\/product\/|\/gp\/aw\/d\/|\/d\/)([A-Z0-9]{10})(?:[\/?#]|$)/i.exec(s);if(m)return m[1].toUpperCase();return /^[A-Z0-9]{10}$/i.test(s)?s.toUpperCase():""}
 function renderBest(){
@@ -785,7 +826,12 @@ function renderBest(){
   var d=h("div","per"),have=TB.some(function(b){return b.n===p.n&&(b.col||"")===(p.col||"")}),btn=h("button","del",have?"In your box":"Add to my box");btn.type="button";btn.style.margin="0";btn.disabled=have;
   btn.onclick=function(){put("t_",{n:p.n,c:p.c,col:p.col||"",asin:p.asin||"",ts:Date.now()},"tmsg")};
   d.appendChild(h("span","",p.n+" · "+p.c+(p.col?" · "+p.col:"")));var r=h("div","per-r");r.appendChild(btn);d.appendChild(r);
-  var ll=h("div","per-l"),a=h("a","","Shop at "+v.n);a.href=(p.asin&&v.p)?v.p(p.asin):v.u(p.n);a.target="_blank";a.rel="noopener noreferrer"+(v.on()?" sponsored":"");ll.appendChild(a);d.appendChild(ll);L.appendChild(d)});
+  var k=hk(p.n,p.col),ll=h("div","per-l"),a=h("a","","Shop at "+v.n);PKM[k]={n:p.n,col:p.col};a.href=p.link?p.link:(p.asin&&v.p)?v.p(p.asin):v.u(p.n);a.target="_blank";a.rel="noopener noreferrer"+(v.on()?" sponsored":"");ll.appendChild(a);
+  var sb=function(t,f){var q=h("button","del",t);q.type="button";q.style.minHeight="34px";q.onclick=f;return q},img=photoOf(k);
+  if(img)ll.insertBefore(thBtn(k,p.n),ll.firstChild);
+  ll.appendChild(sb(img?"Change photo":"Add photo",function(){bTarget=k;$("bmsg").textContent="";$("bphoto").click()}));
+  if(PH.some(function(x){return x.k===k}))ll.appendChild(sb("Remove my photo",function(){del("p_"+k)}));
+  d.appendChild(ll);L.appendChild(d)});
 }
 function renderT(){
  var Lt=$("tlist");Lt.innerHTML="";$("tcnt").textContent=TB.length?"("+TB.length+")":"";
@@ -793,7 +839,7 @@ function renderT(){
   var d=h("div","per"),x=h("button","del","Remove"),arm=false;x.type="button";x.style.margin="0";
   x.onclick=function(){if(!arm){arm=true;x.textContent="Tap again"}else del(b.id)};
   var r=h("div","per-r");r.appendChild(x);
-  d.appendChild(h("span","",b.n+" · "+b.c+(b.col?" · "+b.col:"")));d.appendChild(r);
+  var kk=hk(b.n,b.col),lf=h("div","per-n");PKM[kk]={n:b.n,col:b.col};if(photoOf(kk))lf.appendChild(thBtn(kk,b.n));lf.appendChild(h("span","",b.n+" · "+b.c+(b.col?" · "+b.col:"")));d.appendChild(lf);d.appendChild(r);
   var ll=h("div","per-l"),sm=function(t,f){var q=h("button","del",t);q.type="button";q.style.minHeight="34px";q.onclick=f;return q};
   if(b.asin){var al=h("a","","Linked to Amazon ("+b.asin+")");al.href=VEND[0].p(b.asin);al.target="_blank";al.rel="noopener noreferrer sponsored";ll.appendChild(al);ll.appendChild(sm("Remove link",function(){upd(b.id,{asin:""})}))}
   else if(tlOpen===b.id){var ti=document.createElement("input");ti.type="text";ti.maxLength=300;ti.placeholder="Amazon product page address";ti.setAttribute("aria-label","Amazon link for "+b.n);var tm=h("span","weak","");tm.setAttribute("role","status");
@@ -804,7 +850,7 @@ function renderT(){
  render();
 }
 L.forEach(function(l){var o=document.createElement("option");o.value=l[0];o.textContent=l[0];$("tc").appendChild(o)});
-var sv="best";try{sv=localStorage.getItem("bsrc")||"best"}catch(e){}if(["all","best","mine"].indexOf(sv)<0)sv="best";$("tsrc").value=sv;$("tsrc").onchange=function(){try{localStorage.setItem("bsrc",this.value)}catch(e){}render()};
+var sv="all";try{sv=localStorage.getItem("bsrc")||"all"}catch(e){}if(["all","best","mine"].indexOf(sv)<0)sv="all";$("tsrc").value=sv;$("tsrc").onchange=function(){try{localStorage.setItem("bsrc",this.value)}catch(e){}render()};
 VEND.forEach(function(v){var o=document.createElement("option");o.value=v.k;o.textContent=v.n;$("vend").appendChild(o)});$("vend").value=V().k;if(VEND.length<2)$("vend").parentNode.hidden=true;
 $("vend").onchange=function(){vk=this.value;try{localStorage.setItem("bpv",vk)}catch(e){}affSync();renderBest();render()};
 $("tadd").onclick=function(){var n=$("tn").value.trim();if(!n){$("tmsg").textContent="Enter a bait name.";return}var lv=$("tlink").value.trim(),as=asinOf(lv);if(lv&&!as){$("tmsg").textContent="No Amazon product code found. Paste the full product page address, or leave it blank.";return}put("t_",{n:n.slice(0,80),c:$("tc").value,col:$("tcol").value.trim().slice(0,40),asin:as,ts:Date.now()},"tmsg");$("tn").value="";$("tcol").value="";$("tlink").value="";$("tmsg").textContent="Added."};
@@ -837,7 +883,7 @@ $("wlv").onclick=liveWind;
  try{if(typeof claude!=="undefined"){DB=await claude.use("db");var U=await claude.use("user");UID=DB&&U?await U.id():null}}catch(e){DB=null;UID=null}
  if(DB&&UID){
   $("jstore").textContent="Saved to your account. Only you can see your entries.";
-  DB.collection("data/users/"+UID).onSnapshot(function(s){J=[];CL=[];W=[];TB=[];CT=[];s.docs.forEach(function(d){var v=d.data();if(d.id.indexOf("j_")===0)J.push(v);else if(d.id.indexOf("l_")===0)CL.push(v);else if(d.id.indexOf("w_")===0)W.push(v);else if(d.id.indexOf("t_")===0)TB.push(v);else if(d.id.indexOf("k_")===0)CT.push(v)});after()},function(){DB=null;loadLocal()});
+  DB.collection("data/users/"+UID).onSnapshot(function(s){J=[];CL=[];W=[];TB=[];CT=[];PH=[];s.docs.forEach(function(d){var v=d.data();if(d.id.indexOf("j_")===0)J.push(v);else if(d.id.indexOf("l_")===0)CL.push(v);else if(d.id.indexOf("w_")===0)W.push(v);else if(d.id.indexOf("t_")===0)TB.push(v);else if(d.id.indexOf("k_")===0)CT.push(v);else if(d.id.indexOf("p_")===0)PH.push(v)});after()},function(){DB=null;loadLocal()});
  }else loadLocal();
 })();
 
@@ -893,5 +939,3 @@ render();fillLakes();sol();renderJ();renderScore();
 </script>
 </body>
 </html>
-
-</body></html>
