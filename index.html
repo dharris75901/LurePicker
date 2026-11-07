@@ -235,7 +235,7 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <svg class="contours" aria-hidden="true" viewBox="0 0 400 220" preserveAspectRatio="xMaxYMid slice"><path d="M170 120C170 40 260 8 340 30C410 50 450 40 470 100C490 160 400 205 320 195C240 188 170 190 170 120Z"/><path d="M210 112C210 62 270 40 330 60C385 78 420 70 440 108C455 146 395 178 330 170C265 162 210 160 210 112Z"/><path d="M240 112C240 80 280 66 322 78C362 90 392 86 408 110C420 134 380 152 332 148C286 144 240 144 240 112Z"/><path d="M272 112C272 96 298 88 324 95C350 102 368 100 378 112C386 124 360 132 334 130C302 128 272 126 272 112Z"/></svg>
 <div class="brand">
 <svg class="logo" viewBox="135 120 760 760" role="img" aria-label="Bass Fishing Buddy logo"><defs><radialGradient id="lgbg" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="#16616d"/><stop offset="1" stop-color="#0a2229"/></radialGradient><linearGradient id="lgfish" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4ee48"/><stop offset="1" stop-color="#9fbd22"/></linearGradient></defs><rect x="0" y="0" width="1024" height="1024" fill="url(#lgbg)"/><path d="M400 392C425 300 540 288 600 340C540 356 470 372 400 392Z" fill="#8fae1c"/><path d="M170 520C250 380 520 340 700 440L860 355C828 440 828 570 860 665L700 585C520 700 250 660 170 520Z" fill="url(#lgfish)"/><path d="M300 575C420 600 560 585 690 520" fill="none" stroke="#6f8a14" stroke-opacity=".55" stroke-width="26" stroke-linecap="round"/><circle cx="272" cy="495" r="26" fill="#fff"/><circle cx="278" cy="497" r="13" fill="#0a2229"/></svg>
-<div><h1>Bass Fishing Buddy</h1><p class="sub">Set today’s conditions and see what to throw.</p></div>
+<div><h1>Bass Fishing Buddy</h1><p class="sub">Set today’s conditions, then see what to throw.</p></div>
 </div>
 <div class="lakebar"><label class="lake-l" for="lk">Lake</label><select id="lk"></select></div>
 <div class="links"><a class="lk" id="gearth" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.6 4 5.6 4 9s-1.2 6.4-4 9c-2.8-2.6-4-5.6-4-9s1.2-6.4 4-9z"/></svg>Google Earth</a><a class="lk" id="gmap" href="#" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>Maps</a></div>
@@ -254,33 +254,6 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 </header>
 
 <div id="pg1">
-<section class="temp" aria-label="Water temperature">
-<p class="card-title">Water temperature</p>
-<div class="read"><div class="deg" id="deg">65°F</div><div class="phase" id="phase"></div></div>
-<input type="range" id="t" min="38" max="92" value="65" aria-label="Water temperature in degrees Fahrenheit">
-<div class="scale"><span>38°</span><span>65°</span><span>92°</span></div>
-</section>
-
-<section class="temp" aria-label="Wind">
-<p class="card-title">Wind speed and direction</p>
-<div class="read"><div class="deg sm" id="wsp">8 mph</div><div class="phase" id="wdr"></div></div>
-<input type="range" id="ws" min="0" max="30" value="8" aria-label="Wind speed in miles per hour">
-<div class="scale"><span>0</span><span>15</span><span>30 mph</span></div>
-<fieldset class="wd-set"><legend>Blowing from</legend><div class="chips" id="wd"></div></fieldset>
-<button type="button" class="del" id="wlv" hidden>Use live wind (AccuWeather)</button><span class="weak" id="wlive" role="status"></span>
-</section>
-
-<section class="temp" aria-label="Time window">
-<p class="card-title" id="tlab">Fishing time</p>
-<div class="read"><div class="deg xs" id="tdl"></div><div class="phase" id="tph"></div></div>
-<div class="dual"><div class="trk" id="trk"></div><input type="range" id="tstart" min="0" max="24" step="0.5" value="6" aria-label="Start time"><input type="range" id="tend" min="0" max="24" step="0.5" value="9" aria-label="End time"></div>
-<div class="scale"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
-<p class="weak small" id="tsun"></p>
-</section>
-
-<div id="ctl"></div>
-<div class="box"><fieldset><legend>What are the bass eating?</legend><div class="chips" id="bf"></div><p class="weak small hint">Pick any you see or know are in the lake. Leave blank if unsure.</p></fieldset></div>
-
 </div>
 <div id="pg3" hidden>
 <p class="weak">Your tackle box feeds the Lures page. There, choose to rank All lures, Bass Buddy’s Best Baits or My tackle box. You can copy picks from Bass Buddy’s Best Baits (under More) into your box.</p>
@@ -317,6 +290,34 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <div class="sc-top"><div class="sc-num" id="scn">0</div><div><div class="sc-lbl" id="scl"></div><p class="weak small" id="scw"></p></div></div>
 <div class="sc-bar"><i id="scb"></i></div>
 </div>
+<h2>Today’s conditions</h2>
+<p class="weak">Adjust these to match the weather at the lake you picked right now: water temperature, wind speed and direction, and the hours you plan to fish. Use the live wind button if it shows, or check the lake’s forecast on <a href="https://weather.gov" target="_blank" rel="noopener">weather.gov</a>. The score and lure picks update as you change them.</p>
+<section class="temp" aria-label="Water temperature">
+<p class="card-title">Water temperature</p>
+<div class="read"><div class="deg" id="deg">65°F</div><div class="phase" id="phase"></div></div>
+<input type="range" id="t" min="38" max="92" value="65" aria-label="Water temperature in degrees Fahrenheit">
+<div class="scale"><span>38°</span><span>65°</span><span>92°</span></div>
+</section>
+
+<section class="temp" aria-label="Wind">
+<p class="card-title">Wind speed and direction</p>
+<div class="read"><div class="deg sm" id="wsp">8 mph</div><div class="phase" id="wdr"></div></div>
+<input type="range" id="ws" min="0" max="30" value="8" aria-label="Wind speed in miles per hour">
+<div class="scale"><span>0</span><span>15</span><span>30 mph</span></div>
+<fieldset class="wd-set"><legend>Blowing from</legend><div class="chips" id="wd"></div></fieldset>
+<button type="button" class="del" id="wlv" hidden>Use live wind (AccuWeather)</button><span class="weak" id="wlive" role="status"></span>
+</section>
+
+<section class="temp" aria-label="Time window">
+<p class="card-title" id="tlab">Fishing time</p>
+<div class="read"><div class="deg xs" id="tdl"></div><div class="phase" id="tph"></div></div>
+<div class="dual"><div class="trk" id="trk"></div><input type="range" id="tstart" min="0" max="24" step="0.5" value="6" aria-label="Start time"><input type="range" id="tend" min="0" max="24" step="0.5" value="9" aria-label="End time"></div>
+<div class="scale"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
+<p class="weak small" id="tsun"></p>
+</section>
+
+<div id="ctl"></div>
+<div class="box"><fieldset><legend>What are the bass eating?</legend><div class="chips" id="bf"></div><p class="weak small hint">Pick any you see or know are in the lake. Leave blank if unsure.</p></fieldset></div>
 <h2>Solunar feeding times</h2>
 <div class="box">
 <div class="dayrow"><button type="button" id="pd" aria-label="Previous day">‹</button><div id="dl"></div><button type="button" id="nd" aria-label="Next day">›</button></div>
@@ -324,14 +325,14 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 </div>
 <h2>Conditions score</h2>
 <div class="box" id="scx">
-<p class="weak small">Water temp, wind, sky, clarity, time and moon come from the Lures page and the lake you picked. Add these two for a fuller score.</p>
+<p class="weak small">Water temp, wind, sky, clarity, time and moon come from the settings above and the lake you picked. Add these two for a fuller score.</p>
 <fieldset><legend>Barometer</legend><div class="chips" id="scp"></div></fieldset>
 <fieldset><legend>Water level</legend><div class="chips" id="scv"></div></fieldset>
 <p class="weak small hint">Check pressure on <a href="https://weather.gov" target="_blank" rel="noopener">weather.gov</a> and lake levels on <a href="https://www.waterdatafortexas.org/reservoirs/statewide" target="_blank" rel="noopener">Water Data for Texas</a>.</p>
 </div>
 <h2>How each factor scores</h2>
 <div class="box" id="scd"></div>
-<button type="button" class="del" id="scgo">Change conditions on the Lures page</button>
+<button type="button" class="del" id="scgo">See lure picks for these conditions</button>
 
 </div>
 <div id="pg4" hidden>
@@ -354,7 +355,7 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 <h2>Fishing journal</h2>
 <div class="box">
 <p class="weak" id="jstore"></p>
-<p class="weak">Each trip is saved with the lake, temperature, conditions, and moon phase you have set on the Lures page.</p>
+<p class="weak">Each trip is saved with the lake, temperature, conditions, and moon phase you have set on the Conditions page.</p>
 <label class="f">Date<input id="jdate" type="date"></label>
 <div class="two"><label class="f">Start time<input id="jstart" type="time"></label><label class="f">End time<input id="jend" type="time"></label></div>
 <label class="f">Waypoint<select id="jwp"></select></label>
@@ -402,7 +403,7 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 </div>
 </div>
 <div id="pg7" hidden>
-<h2 id="ch">Contacts</h2>
+<h2 id="ch">Lake Contacts</h2>
 <p class="weak">Guides, shops, marinas, and other numbers for the lake you picked. These are separate from your iPhone contacts. To copy them to your phone, use Contacts (VCF) on the Export page, under More.</p>
 <div class="box">
 <label class="f">Name<input id="cn" type="text" maxlength="80" placeholder="Capt. Jim Smith"></label>
@@ -419,9 +420,9 @@ main>div[id^="pg"]{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;ali
 
 <p class="foot">A starting point, not a guarantee. Baitfish location, fishing pressure, and the fish’s mood can override any chart. If something isn’t working, change depth or speed before changing lures.</p>
 </main>
-<nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb1" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb5"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Conditions</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
+<nav class="nav" aria-label="Sections"><div class="navin"><button type="button" id="tb5" aria-current="page"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="lab">Conditions</span></button><button type="button" id="tb1"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="3.4" r="1.3"/><path d="M12 4.7v10.8a4 4 0 0 1-8 0V14M4 14l2.2-2.2"/></svg></span><span class="lab">Lures</span></button><button type="button" id="tb3"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5"/><path d="M8.5 8V6.5A1.5 1.5 0 0 1 10 5h4a1.5 1.5 0 0 1 1.5 1.5V8M3 13.5h18M10.5 13.5v2h3v-2"/></svg></span><span class="lab">Tackle</span></button><button type="button" id="tb4"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="lab">Waypoints</span></button><button type="button" id="tb2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h10.5A1.5 1.5 0 0 1 18 5v15.5H7.5A1.5 1.5 0 0 1 6 19V3.5z"/><path d="M9.5 8h5M9.5 11.5h5"/></svg></span><span class="lab">Journal</span></button><button type="button" id="tbm" aria-haspopup="true" aria-expanded="false" aria-controls="more"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lab">More</span></button></div></nav>
 <div class="pv" id="pv" role="dialog" aria-modal="true" aria-label="Bait photo" hidden><div class="pv-c"><img id="pvi" alt=""><p id="pvt"></p><button type="button" class="save" id="pvx">Close</button></div></div>
-<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb11"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4.5v5M16.5 18l-3-4.2"/></svg>Line and Gear</button><button type="button" id="tb10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2M21.5 9v5"/></svg>Bass Academy</button><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
+<div class="sheet" id="more" aria-label="More sections" hidden><button type="button" id="tb11"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4.5v5M16.5 18l-3-4.2"/></svg>Line and Gear</button><button type="button" id="tb10"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5v4.2c0 1.2 2.7 2.8 6 2.8s6-1.6 6-2.8v-4.2M21.5 9v5"/></svg>Bass Academy</button><button type="button" id="tb9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>Bass Buddy’s Best Baits</button><button type="button" id="tb7"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-3.6 3.5-5.5 7-5.5s6.4 1.9 7 5.5"/></svg>Lake Contacts</button><button type="button" id="tb6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg>Export</button></div>
 
 <script>
 var G=[
@@ -984,6 +985,7 @@ function renderScore(){
 }
 scChips("scp",SCP,"p");scChips("scv",SCV,"v");
 render();fillLakes();sol();renderJ();renderScore();
+tab(5);
 </script>
 </body>
 </html>
